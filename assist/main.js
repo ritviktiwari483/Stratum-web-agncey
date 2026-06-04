@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const originalText = btn.innerHTML;
       
       // Your Google Sheets Web App URL
-      const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz6n26BscRSJZpgUU2sg9FpfRmwiWtQpsgieZcCe7STOIgugTi7L0NHRgX2V4q00CrQ/exec";
+      const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwj9dfYttGfhyBS1ese38Oc2VWO20YKGpujnxGt1jgbYT1JIPwbS4lKc3R6V39cbQpC/exec";
       
       try {
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> SAVING LEAD...';
