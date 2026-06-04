@@ -223,20 +223,25 @@ document.addEventListener('DOMContentLoaded', () => {
       const originalText = btn.innerHTML;
       
       // Your Google Sheets Web App URL
-      const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz1Ti_v284TjBn0ArRitkEfvKWimtqIOneepquFZD7AHf6jsHfjIwPBrq_j5x8lJetC/exec";
+      const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz6n26BscRSJZpgUU2sg9FpfRmwiWtQpsgieZcCe7STOIgugTi7L0NHRgX2V4q00CrQ/exec";
       
       try {
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> SAVING LEAD...';
         btn.disabled = true;
 
-        // Collect form data
+        // Collect form data and convert to URLSearchParams for better Google Script compatibility
         const formData = new FormData(contactForm);
+        const searchParams = new URLSearchParams();
         
-        // Use Fetch with no-cors if needed for Google Scripts, or a standard post
+        for (const pair of formData) {
+          searchParams.append(pair[0], pair[1]);
+        }
+        
+        // Use Fetch with no-cors
         await fetch(SCRIPT_URL, {
           method: 'POST',
-          body: formData,
-          mode: 'no-cors' // Google Apps Script requires this for cross-domain POST without preflight
+          body: searchParams,
+          mode: 'no-cors'
         });
 
         // Since we use no-cors, we assume success if no crash

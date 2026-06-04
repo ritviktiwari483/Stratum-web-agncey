@@ -395,57 +395,60 @@
     <div class="max-w-4xl mx-auto px-4 md:px-8 text-center">
       <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-8 heading-accent">Ready to Start?</h2>
       <p class="text-lg text-slate-600 mb-12">Let's build something remarkable together.</p>
-      <div class="bg-white p-8 md:p-14 rounded-3xl shadow-xl border border-slate-100 text-left">
-        <form class="space-y-6">
+      <div class="bg-white p-8 md:p-14 rounded-[2.5rem] shadow-2xl shadow-slate-200/60 border border-slate-100 text-left relative overflow-hidden">
+        <!-- Accent Glow -->
+        <div class="absolute -top-20 -right-20 w-40 h-40 bg-gold/5 rounded-full blur-3xl"></div>
+        
+        <form class="space-y-6 relative z-10">
           <div class="grid md:grid-cols-2 gap-6">
-            <input type="text" placeholder="Your Name" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 outline-none focus:border-gold transition text-slate-900">
-            <div class="flex gap-2">
-              <select class="w-1/3 bg-slate-50 border border-slate-200 rounded-2xl px-3 py-4 outline-none focus:border-gold transition text-slate-900 text-sm">
-                <option value="+1">🇺🇸 +1</option>
-                <option value="+44">🇬🇧 +44</option>
-                <option value="+91" selected>🇮🇳 +91</option>
-                <option value="+61">🇦🇺 +61</option>
-                <option value="+81">🇯🇵 +81</option>
-                <option value="+86">🇨🇳 +86</option>
-                <option value="+49">🇩🇪 +49</option>
-                <option value="+33">🇫🇷 +33</option>
-                <option value="+55">🇧🇷 +55</option>
-                <option value="+971">🇦🇪 +971</option>
-                <option value="+82">🇰🇷 +82</option>
-                <option value="+65">🇸🇬 +65</option>
-                <option value="+60">🇲🇾 +60</option>
-                <option value="+63">🇵🇭 +63</option>
-                <option value="+1">🇨🇦 +1</option>
-                <option value="+39">🇮🇹 +39</option>
-                <option value="+34">🇪🇸 +34</option>
-                <option value="+31">🇳🇱 +31</option>
-                <option value="+46">🇸🇪 +46</option>
-                <option value="+41">🇨🇭 +41</option>
-                <option value="+47">🇳🇴 +47</option>
-                <option value="+45">🇩🇰 +45</option>
-                <option value="+358">🇫🇮 +358</option>
-                <option value="+64">🇳🇿 +64</option>
-                <option value="+27">🇿🇦 +27</option>
-                <option value="+52">🇲🇽 +52</option>
-                <option value="+54">🇦🇷 +54</option>
-                <option value="+56">🇨🇱 +56</option>
-                <option value="+57">🇨🇴 +57</option>
-                <option value="+98">🇮🇷 +98</option>
-                <option value="+90">🇹🇷 +90</option>
-                <option value="+966">🇸🇦 +966</option>
-                <option value="+972">🇮🇱 +972</option>
-                <option value="+20">🇪🇬 +20</option>
-                <option value="+234">🇳🇬 +234</option>
-                <option value="+254">🇰🇪 +254</option>
-                <option value="+233">🇬🇭 +233</option>
-              </select>
-              <input type="tel" placeholder="Phone Number" class="w-2/3 bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 outline-none focus:border-gold transition text-slate-900">
+            <div class="relative group">
+              <i class="fa-solid fa-user absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 text-sm group-focus-within:text-gold transition-colors"></i>
+              <input type="text" name="full_name" placeholder="Full Name" class="w-full bg-slate-50/50 border border-slate-200 rounded-2xl pl-12 pr-6 py-4 outline-none focus:border-gold focus:bg-white focus:ring-4 focus:ring-gold/5 transition-all duration-300 text-slate-900" required>
+            </div>
+            <div class="relative group">
+              <i class="fa-solid fa-envelope absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 text-sm group-focus-within:text-gold transition-colors"></i>
+              <input type="email" name="email" placeholder="Business Email" class="w-full bg-slate-50/50 border border-slate-200 rounded-2xl pl-12 pr-6 py-4 outline-none focus:border-gold focus:bg-white focus:ring-4 focus:ring-gold/5 transition-all duration-300 text-slate-900" required>
             </div>
           </div>
-          <input type="email" name="email" placeholder="Business Email" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 outline-none focus:border-gold transition text-slate-900" required>
-          <textarea name="message" placeholder="Tell us about your project..." rows="5" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 outline-none focus:border-gold transition text-slate-900" required></textarea>
-          <button type="submit" class="btn-gold w-full py-5 text-lg rounded-2xl">
-            GET A FREE CONSULTATION
+          
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="relative group">
+              <i class="fa-solid fa-earth-americas absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 text-sm z-10 group-focus-within:text-gold transition-colors"></i>
+              <select name="user_country" class="w-full bg-slate-50/50 border border-slate-200 rounded-2xl pl-12 pr-10 py-4 outline-none focus:border-gold focus:bg-white transition-all duration-300 text-slate-500 appearance-none cursor-pointer relative" required>
+                <option value="" disabled selected>Select Country</option>
+                <option value="India">🇮🇳 India</option>
+                <option value="USA">🇺🇸 United States</option>
+                <option value="UK">🇬🇧 United Kingdom</option>
+                <option value="Canada">🇨🇦 Canada</option>
+                <option value="Australia">🇦🇺 Australia</option>
+                <option value="UAE">🇦🇪 UAE</option>
+                <option value="Other">🌍 Other</option>
+              </select>
+              <i class="fa-solid fa-chevron-down absolute right-6 top-1/2 -translate-y-1/2 text-slate-300 text-[10px] pointer-events-none"></i>
+            </div>
+
+            <div class="flex gap-3">
+              <div class="relative">
+                <select name="country_code" class="w-[90px] h-full bg-slate-50/50 border border-slate-200 rounded-2xl px-3 py-4 outline-none focus:border-gold focus:bg-white transition-all duration-300 text-slate-900 text-sm cursor-pointer appearance-none">
+                  <option value="+91" selected>🇮🇳 +91</option>
+                  <option value="+1">🇺🇸 +1</option>
+                  <option value="+44">🇬🇧 +44</option>
+                  <option value="+971">🇦🇪 +971</option>
+                </select>
+                <i class="fa-solid fa-caret-down absolute right-3 top-1/2 -translate-y-1/2 text-slate-300 text-[10px] pointer-events-none"></i>
+              </div>
+              <input type="tel" name="phone_number" placeholder="Phone Number" class="flex-1 bg-slate-50/50 border border-slate-200 rounded-2xl px-6 py-4 outline-none focus:border-gold focus:bg-white transition-all duration-300 text-slate-900" required>
+            </div>
+          </div>
+
+          <div class="relative group">
+            <i class="fa-solid fa-comment-dots absolute left-5 top-5 text-slate-400 text-sm group-focus-within:text-gold transition-colors"></i>
+            <textarea name="message" placeholder="Briefly describe your project goals..." rows="4" class="w-full bg-slate-50/50 border border-slate-200 rounded-2xl pl-12 pr-6 py-4 outline-none focus:border-gold focus:bg-white transition-all duration-300 text-slate-900" required></textarea>
+          </div>
+          
+          <button type="submit" class="btn-gold w-full py-5 text-lg font-bold rounded-2xl shadow-xl shadow-gold/20 hover:shadow-gold/40 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3">
+            <span>START A CONVERSATION</span>
+            <i class="fa-solid fa-arrow-right-long text-sm"></i>
           </button>
         </form>
       </div>
