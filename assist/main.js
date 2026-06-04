@@ -215,36 +215,48 @@ if (backToTop) {
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
   const contactForm = document.querySelector('#contact form');
+  let lastSubmitTime = 0; // For Rate Limiting
+
   if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       
+      const currentTime = Date.now();
+      // Prevent clicking submit more than once every 10 seconds
+      if (currentTime - lastSubmitTime < 10000) {
+        return; 
+      }
+      
       const btn = contactForm.querySelector('button');
       const originalText = btn.innerHTML;
-      
-      // Your Google Sheets Web App URL
+      const formData = new FormData(contactForm);
+
+      // 1. HONEYPOT CHECK
+      if (formData.get('_honeypot')) {
+        console.warn("Spam detected!");
+        btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> SENT SUCCESSFULLY';
+        contactForm.reset();
+        return; 
+      }
+
       const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwj9dfYttGfhyBS1ese38Oc2VWO20YKGpujnxGt1jgbYT1JIPwbS4lKc3R6V39cbQpC/exec";
       
       try {
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> SAVING LEAD...';
         btn.disabled = true;
 
-        // Collect form data and convert to URLSearchParams for better Google Script compatibility
-        const formData = new FormData(contactForm);
         const searchParams = new URLSearchParams();
-        
         for (const pair of formData) {
           searchParams.append(pair[0], pair[1]);
         }
         
-        // Use Fetch with no-cors
         await fetch(SCRIPT_URL, {
           method: 'POST',
           body: searchParams,
           mode: 'no-cors'
         });
 
-        // Since we use no-cors, we assume success if no crash
+        lastSubmitTime = currentTime; // Update throttle time
         btn.innerHTML = '<i class="fa-solid fa-circle-check scale-125"></i> SENT SUCCESSFULLY';
         btn.style.background = '#10b981';
         contactForm.reset();
@@ -252,7 +264,6 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (error) {
         btn.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> ERROR - TRY AGAIN';
         btn.style.background = '#ef4444';
-        console.error('Error!', error.message);
       } finally {
         setTimeout(() => {
           btn.innerHTML = originalText;
