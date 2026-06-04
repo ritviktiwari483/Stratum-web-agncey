@@ -3,349 +3,364 @@
 
 {% block content %}
 
-<!-- Hero -->
-<section id="home" class="hero-bg min-h-screen flex items-center">
-  <div class="max-w-7xl mx-auto px-4 md:px-8 text-center">
-    <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight tracking-tighter mb-4 md:mb-6 text-gray-900 anim-hero">
-      WE DON'T JUST CREATE<br><span class="gold-accent">DIGITAL PRODUCTS.</span><br><span class="gold-accent shimmer">WE CREATE IMPACT.</span>
-    </h1>
-    <p class="max-w-3xl mx-auto text-base sm:text-lg md:text-2xl text-gray-600 mb-8 md:mb-12 anim-hero-2">
-      From professional websites and powerful branding to video editing and graphic design, StratumWeb Agency helps businesses build a stronger digital presence.
-    </p>
-    <div class="flex flex-col sm:flex-row justify-center gap-4 md:gap-6 px-2 anim-hero-3">
-      <a href="#work" class="btn-outline px-8 md:px-10 py-4 md:py-5 border-2 border-gray-900 text-base md:text-lg font-semibold rounded-full hover:bg-gray-900 hover:text-white transition">VIEW PORTFOLIO</a>
-      <a href="#contact" class="btn-gold px-8 md:px-10 py-4 md:py-5 text-base md:text-lg rounded-full">START YOUR PROJECT</a>
+  <!-- Hero -->
+  <section id="home" class="hero-bg min-h-screen flex items-center relative overflow-hidden">
+    <div class="hero-glow"></div>
+    <div class="max-w-7xl mx-auto px-4 md:px-8 text-center relative z-10 pt-24 md:pt-20">
+      <h1 class="text-4xl sm:text-7xl md:text-9xl font-bold mb-6 md:mb-8 hero-title anim-hero">
+        WE CREATE<br><span class="gold-accent">IMPACTFUL</span><br>DIGITAL <span class="text-white">CULTURE.</span>
+      </h1>
+      <p class="max-w-xl mx-auto text-base md:text-2xl text-white/80 mb-10 md:mb-12 anim-hero-2 leading-relaxed px-4 md:px-0">
+        Strategic design and professional development for brands ready to lead their industry. 
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4 md:gap-6 anim-hero-3 px-6 sm:px-0">
+        <a href="#work" class="btn-outline px-10 md:px-12 py-4 md:py-5 text-sm md:text-base font-semibold rounded-full border-white text-white hover:bg-white hover:text-slate-900 transition-all duration-300">
+          VIEW PORTFOLIO
+        </a>
+        <a href="#contact" class="btn-gold px-10 md:px-12 py-4 md:py-5 text-sm md:text-base font-semibold rounded-full shadow-xl transition-all duration-300">
+          START YOUR PROJECT
+        </a>
+      </div>
+      <div class="mt-24 md:mt-32 anim-hero-4">
+        <p class="text-[10px] tracking-[0.3em] text-white/60 uppercase mb-4">Co-Founded by Ritvik Tiwari & Ayush Singh</p>
+        <div class="flex justify-center">
+          <div class="w-[1px] h-12 bg-gradient-to-b from-gold to-transparent opacity-50"></div>
+        </div>
+      </div>
     </div>
-    <p class="mt-10 md:mt-16 text-xs md:text-sm tracking-widest text-gray-500 anim-hero-4">CO-FOUNDED BY RITVIK TIWARI & AYUSH SINGH</p>
-  </div>
-</section>
+  </section>
 
-<!-- About -->
-<section id="about" class="py-16 md:py-28 bg-gray-50">
-  <div class="max-w-7xl mx-auto px-4 md:px-8">
-    <div class="grid md:grid-cols-2 gap-10 md:gap-20 items-center">
-      <div class="reveal">
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6 md:mb-10">
-          BUILT FOR BUSINESSES<br>THAT WANT TO <span class="gold-accent shimmer">STAND OUT.</span>
-        </h2>
-        <p class="text-base md:text-lg text-gray-600 leading-relaxed">
-          StratumWeb Agency combines creativity, strategy, and technology to help brands grow through professional digital solutions. Every project is built with attention to detail, quality, and long-term value.
-        </p>
-        <div class="mt-8 md:mt-12 flex gap-8 md:gap-12">
-          <div>
-            <h4 class="font-semibold text-lg md:text-xl">Ritvik Tiwari</h4>
-            <p class="text-[#1E3A8A] text-sm md:text-base">Co-Founder & CEO</p>
+  <!-- About -->
+  <section id="about" class="py-20 md:py-32 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
+        <div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-8 text-slate-900">
+            Built for businesses<br>that want to <span class="gold-accent">stand out.</span>
+          </h2>
+          <p class="text-lg text-slate-600 leading-relaxed mb-10">
+            StratumWeb Agency combines creativity, strategy, and technology to help brands grow through professional digital solutions. Every project is built with attention to detail, quality, and long-term value.
+          </p>
+          <div class="flex flex-wrap gap-8 md:gap-12">
+            <div>
+              <h4 class="font-bold text-lg text-slate-900">Ritvik Tiwari</h4>
+              <p class="text-primary font-medium text-sm">Co-Founder & CEO</p>
+            </div>
+            <div>
+              <h4 class="font-bold text-lg text-slate-900">Ayush Singh</h4>
+              <p class="text-primary font-medium text-sm">Co-Founder & CEO</p>
+            </div>
           </div>
-          <div>
-            <h4 class="font-semibold text-lg md:text-xl">Ayush Singh</h4>
-            <p class="text-[#1E3A8A] text-sm md:text-base">Co-Founder & CEO</p>
+        </div>
+        <div class="bg-white p-8 md:p-14 rounded-3xl shadow-sm border border-slate-100">
+          <p class="text-xl md:text-2xl font-medium text-slate-800 leading-relaxed italic">
+            "<span class="gold-accent">Ideas</span>. <span class="gold-accent">Design</span>. <span class="gold-accent">Execution</span>. We deliver excellence at every step."
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section id="stats" class="py-20 bg-slate-900">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
+        <div class="text-center text-white">
+          <p class="text-4xl md:text-5xl font-bold gold-accent mb-2"><span class="counter" data-target="150">0</span>+</p>
+          <p class="text-xs md:text-sm text-slate-400 uppercase tracking-widest font-medium">Projects Completed</p>
+        </div>
+        <div class="text-center text-white">
+          <p class="text-4xl md:text-5xl font-bold gold-accent mb-2"><span class="counter" data-target="98">0</span>%</p>
+          <p class="text-xs md:text-sm text-slate-400 uppercase tracking-widest font-medium">Client Satisfaction</p>
+        </div>
+        <div class="text-center text-white">
+          <p class="text-4xl md:text-5xl font-bold gold-accent mb-2"><span class="counter" data-target="5">0</span>+</p>
+          <p class="text-xs md:text-sm text-slate-400 uppercase tracking-widest font-medium">Years Experience</p>
+        </div>
+        <div class="text-center text-white">
+          <p class="text-4xl md:text-5xl font-bold gold-accent mb-2"><span class="counter" data-target="50">0</span>+</p>
+          <p class="text-xs md:text-sm text-slate-400 uppercase tracking-widest font-medium">Happy Clients</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="py-20 md:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="text-center mb-16 md:mb-24">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 heading-accent">Our Core Expertise</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="service-card text-center p-6 md:p-10">
+          <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <i class="fa-solid fa-code text-2xl gold-accent"></i>
           </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Website Development</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">High-performance, conversion-focused websites built with precision.</p>
         </div>
-      </div>
-      <div class="bg-white p-6 md:p-12 rounded-3xl shadow-sm border border-gray-100 reveal">
-        <p class="text-xl md:text-2xl italic text-gray-700">"<span class="gold-accent">Ideas</span>. <span class="gold-accent">Design</span>. <span class="gold-accent">Execution</span>. We deliver excellence at every step."</p>
+        <div class="service-card text-center p-6 md:p-10">
+          <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <i class="fa-solid fa-video text-2xl gold-accent"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Video Editing</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">Professional cinematic video production for modern brands.</p>
+        </div>
+        <div class="service-card text-center p-6 md:p-10">
+          <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <i class="fa-solid fa-palette text-2xl gold-accent"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Graphic Design</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">Stunning visuals that communicate your brand's power effectively.</p>
+        </div>
+        <div class="service-card text-center p-6 md:p-10">
+          <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <i class="fa-solid fa-gem text-2xl gold-accent"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Logo & Branding</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">Timeless brand identities that stand the test of time and competition.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Stats -->
-<section id="stats" class="py-16 md:py-24 bg-[#1E3A8A]">
-  <div class="max-w-7xl mx-auto px-4 md:px-8">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-      <div class="stat-card text-center text-white reveal">
-        <p class="text-4xl md:text-5xl font-bold gold-accent"><span class="counter" data-target="150">0</span>+</p>
-        <p class="mt-2 text-sm md:text-base text-gray-300 uppercase tracking-wider">Projects Completed</p>
+  <!-- Process -->
+  <section id="process" class="py-20 md:py-32 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="text-center mb-16 md:mb-24">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 heading-accent">Our Methodology</h2>
       </div>
-      <div class="stat-card text-center text-white reveal">
-        <p class="text-4xl md:text-5xl font-bold gold-accent"><span class="counter" data-target="98">0</span>%</p>
-        <p class="mt-2 text-sm md:text-base text-gray-300 uppercase tracking-wider">Client Satisfaction</p>
-      </div>
-      <div class="stat-card text-center text-white reveal">
-        <p class="text-4xl md:text-5xl font-bold gold-accent"><span class="counter" data-target="5">0</span>+</p>
-        <p class="mt-2 text-sm md:text-base text-gray-300 uppercase tracking-wider">Years Experience</p>
-      </div>
-      <div class="stat-card text-center text-white reveal">
-        <p class="text-4xl md:text-5xl font-bold gold-accent"><span class="counter" data-target="50">0</span>+</p>
-        <p class="mt-2 text-sm md:text-base text-gray-300 uppercase tracking-wider">Happy Clients</p>
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="process-step bg-white p-6 md:p-8 rounded-3xl border border-slate-100 shadow-sm">
+          <div class="w-12 h-12 bg-slate-900 text-white rounded-full flex items-center justify-center font-bold mb-6">01</div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Discovery</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">Deep dive into your brand goals and market position.</p>
+        </div>
+        <div class="process-step bg-white p-6 md:p-8 rounded-3xl border border-slate-100 shadow-sm">
+          <div class="w-12 h-12 bg-slate-900 text-white rounded-full flex items-center justify-center font-bold mb-6">02</div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Strategy</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">Developing the roadmap for your digital success.</p>
+        </div>
+        <div class="process-step bg-white p-6 md:p-8 rounded-3xl border border-slate-100 shadow-sm">
+          <div class="w-12 h-12 bg-slate-900 text-white rounded-full flex items-center justify-center font-bold mb-6">03</div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Execution</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">Precision building with the latest technologies.</p>
+        </div>
+        <div class="process-step bg-white p-6 md:p-8 rounded-3xl border border-slate-100 shadow-sm">
+          <div class="w-12 h-12 bg-slate-900 text-white rounded-full flex items-center justify-center font-bold mb-6">04</div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Delivery</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">Launch and optimization for peak performance.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Services -->
-<section id="services" class="py-16 md:py-28 bg-white">
-  <div class="max-w-7xl mx-auto px-4 md:px-8">
-    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-10 md:mb-16 reveal heading-accent">What We Bring To The Table</h2>
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
-      <div class="service-card bg-white border border-gray-100 p-6 md:p-10 rounded-3xl text-center hover:border-[#1E3A8A] reveal">
-        <i class="fa-solid fa-code text-4xl md:text-5xl gold-accent mb-4 md:mb-6"></i>
-        <h3 class="text-xl md:text-2xl font-semibold mb-2 md:mb-3"><span class="gold-accent">Website</span> Development</h3>
-        <p class="text-sm md:text-base text-gray-600">High-performance, conversion-focused websites.</p>
+  <!-- Portfolio -->
+  <section id="work" class="py-20 md:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="text-center mb-16 md:mb-24">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 heading-accent">Selected Projects</h2>
       </div>
-      <div class="service-card bg-white border border-gray-100 p-6 md:p-10 rounded-3xl text-center hover:border-[#1E3A8A] reveal">
-        <i class="fa-solid fa-video text-4xl md:text-5xl gold-accent mb-4 md:mb-6"></i>
-        <h3 class="text-xl md:text-2xl font-semibold mb-2 md:mb-3"><span class="gold-accent">Video</span> Editing</h3>
-        <p class="text-sm md:text-base text-gray-600">Professional cinematic video production.</p>
-      </div>
-      <div class="service-card bg-white border border-gray-100 p-6 md:p-10 rounded-3xl text-center hover:border-[#1E3A8A] reveal">
-        <i class="fa-solid fa-palette text-4xl md:text-5xl gold-accent mb-4 md:mb-6"></i>
-        <h3 class="text-xl md:text-2xl font-semibold mb-2 md:mb-3"><span class="gold-accent">Graphic</span> Design</h3>
-        <p class="text-sm md:text-base text-gray-600">Stunning visuals that communicate powerfully.</p>
-      </div>
-      <div class="service-card bg-white border border-gray-100 p-6 md:p-10 rounded-3xl text-center hover:border-[#1E3A8A] reveal">
-        <i class="fa-solid fa-gem text-4xl md:text-5xl gold-accent mb-4 md:mb-6"></i>
-        <h3 class="text-xl md:text-2xl font-semibold mb-2 md:mb-3"><span class="gold-accent">Logo</span> & Branding</h3>
-        <p class="text-sm md:text-base text-gray-600">Timeless brand identities that stand out.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Process -->
-<section id="process" class="py-16 md:py-28 bg-gray-50">
-  <div class="max-w-7xl mx-auto px-4 md:px-8">
-    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-10 md:mb-16 reveal heading-accent">How We Work</h2>
-    <div class="grid md:grid-cols-4 gap-6 md:gap-8 relative">
-      <div class="process-step bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-100 text-center reveal">
-        <div class="w-14 h-14 bg-[#1E3A8A] rounded-full flex items-center justify-center mx-auto mb-4">
-          <span class="text-xl font-bold text-white">01</span>
-        </div>
-        <h3 class="text-lg md:text-xl font-semibold mb-2"><span class="gold-accent">Discover</span></h3>
-        <p class="text-sm md:text-base text-gray-600">We learn your brand, goals, and vision inside out.</p>
-      </div>
-      <div class="process-step bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-100 text-center reveal">
-        <div class="w-14 h-14 bg-[#1E3A8A] rounded-full flex items-center justify-center mx-auto mb-4">
-          <span class="text-xl font-bold text-white">02</span>
-        </div>
-        <h3 class="text-lg md:text-xl font-semibold mb-2"><span class="gold-accent">Design</span></h3>
-        <p class="text-sm md:text-base text-gray-600">We craft stunning concepts tailored to your needs.</p>
-      </div>
-      <div class="process-step bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-100 text-center reveal">
-        <div class="w-14 h-14 bg-[#1E3A8A] rounded-full flex items-center justify-center mx-auto mb-4">
-          <span class="text-xl font-bold text-white">03</span>
-        </div>
-        <h3 class="text-lg md:text-xl font-semibold mb-2"><span class="gold-accent">Develop</span></h3>
-        <p class="text-sm md:text-base text-gray-600">We build with precision using the latest technologies.</p>
-      </div>
-      <div class="process-step bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-100 text-center reveal">
-        <div class="w-14 h-14 bg-[#1E3A8A] rounded-full flex items-center justify-center mx-auto mb-4">
-          <span class="text-xl font-bold text-white">04</span>
-        </div>
-        <h3 class="text-lg md:text-xl font-semibold mb-2"><span class="gold-accent">Deliver</span></h3>
-        <p class="text-sm md:text-base text-gray-600">We launch, test, and ensure everything is perfect.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Portfolio -->
-<section id="work" class="py-16 md:py-28 bg-white">
-  <div class="max-w-7xl mx-auto px-4 md:px-8">
-    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-10 md:mb-16 reveal heading-accent">Our Masterpiece</h2>
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-6">
-      {% for project in portfolios %}
-      <div class="portfolio-card bg-white rounded-3xl overflow-hidden shadow-sm border border-transparent hover:border-[#1E3A8A] reveal">
-        <img src="{{ project.image.url }}" alt="{{ project.title }}" class="w-full h-60 md:h-72 object-cover transition-transform duration-500 hover:scale-105" loading="lazy">
-        <div class="p-6 md:p-8">
-          <h3 class="font-semibold text-xl md:text-2xl gold-accent">{{ project.title }}</h3>
-          <p class="text-sm md:text-base text-gray-500">{{ project.get_category_display }}</p>
-        </div>
-      </div>
-      {% empty %}
-        {% for item in "1234" %}
-        <div class="portfolio-card bg-white rounded-3xl overflow-hidden shadow-sm border border-transparent reveal">
-          <img src="https://picsum.photos/id/{{ forloop.counter|add:1000 }}/800/520" alt="Sample project" class="w-full h-60 md:h-72 object-cover" loading="lazy">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        {% for project in portfolios %}
+        <div class="portfolio-card group">
+          <div class="overflow-hidden">
+            <img src="{{ project.image.url }}" alt="{{ project.title }}" class="w-full h-64 object-cover">
+          </div>
           <div class="p-6 md:p-8">
-            <h3 class="font-semibold text-xl md:text-2xl"><span class="gold-accent">Sample</span> Project</h3>
-            <p class="text-sm md:text-base text-gray-500">Website Development</p>
+            <h3 class="font-bold text-xl md:text-2xl text-slate-900 mb-2">{{ project.title }}</h3>
+            <p class="text-sm font-medium text-slate-400 uppercase tracking-widest">{{ project.get_category_display }}</p>
+          </div>
+        </div>
+        {% empty %}
+        <!-- Default Fallback if no projects in DB -->
+        <div class="portfolio-card group">
+          <div class="overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="E-Commerce" class="w-full h-64 object-cover">
+          </div>
+          <div class="p-6 md:p-8">
+            <h3 class="font-bold text-xl md:text-2xl text-slate-900 mb-2">Elite Commerce</h3>
+            <p class="text-sm font-medium text-slate-400 uppercase tracking-widest">Website Development</p>
           </div>
         </div>
         {% endfor %}
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<!-- Why Choose Us -->
-<section class="py-16 md:py-28 bg-gray-50">
-  <div class="max-w-7xl mx-auto px-4 md:px-8">
-    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-10 md:mb-16 reveal heading-accent">Why Businesses Trust <span class="gold-accent">StratumWeb</span></h2>
-    <div class="grid md:grid-cols-3 gap-8 md:gap-10">
-      <div class="text-center reveal">
-        <div class="w-16 h-16 bg-[#1E3A8A]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="fa-solid fa-medal text-2xl gold-accent"></i>
-        </div>
-        <h4 class="text-xl md:text-2xl font-semibold mb-2 md:mb-3"><span class="gold-accent">Professional</span> Quality</h4>
-        <p class="text-sm md:text-base text-gray-600">Premium standards in every project.</p>
-      </div>
-      <div class="text-center reveal">
-        <div class="w-16 h-16 bg-[#1E3A8A]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="fa-solid fa-lightbulb text-2xl gold-accent"></i>
-        </div>
-        <h4 class="text-xl md:text-2xl font-semibold mb-2 md:mb-3"><span class="gold-accent">Creative</span> Solutions</h4>
-        <p class="text-sm md:text-base text-gray-600">Strategic and innovative designs.</p>
-      </div>
-      <div class="text-center reveal">
-        <div class="w-16 h-16 bg-[#1E3A8A]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="fa-solid fa-rocket text-2xl gold-accent"></i>
-        </div>
-        <h4 class="text-xl md:text-2xl font-semibold mb-2 md:mb-3"><span class="gold-accent">Fast</span> Delivery</h4>
-        <p class="text-sm md:text-base text-gray-600">Efficient execution without compromise.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Testimonials -->
-<section id="testimonials" class="py-16 md:py-28 bg-white">
-  <div class="max-w-7xl mx-auto px-4 md:px-8">
-    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-10 md:mb-16 reveal heading-accent">What Our Clients Say</h2>
-    <div class="grid md:grid-cols-3 gap-6 md:gap-8">
-      <div class="testimonial-card bg-gray-50 p-6 md:p-8 rounded-3xl border border-gray-100 reveal">
-        <div class="flex mb-4">
-          <i class="fa-solid fa-star gold-accent"></i>
-          <i class="fa-solid fa-star gold-accent"></i>
-          <i class="fa-solid fa-star gold-accent"></i>
-          <i class="fa-solid fa-star gold-accent"></i>
-          <i class="fa-solid fa-star gold-accent"></i>
-        </div>
-        <p class="text-gray-600 text-sm md:text-base leading-relaxed mb-6">"StratumWeb transformed our online presence completely. Our sales have doubled since the new website launched. Incredible work!"</p>
-        <p class="font-semibold">&mdash; Priya Sharma</p>
+  <!-- Why Choose Us -->
+  <section id="why-choose" class="py-20 md:py-32 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="text-center mb-16 md:mb-24">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 heading-accent">Why StratumWeb</h2>
       </div>
-      <div class="testimonial-card bg-gray-50 p-6 md:p-8 rounded-3xl border border-gray-100 reveal">
-        <div class="flex mb-4">
-          <i class="fa-solid fa-star gold-accent"></i>
-          <i class="fa-solid fa-star gold-accent"></i>
-          <i class="fa-solid fa-star gold-accent"></i>
-          <i class="fa-solid fa-star gold-accent"></i>
-          <i class="fa-solid fa-star gold-accent"></i>
+      <div class="grid md:grid-cols-3 gap-12">
+        <div class="text-center">
+          <div class="w-20 h-20 bg-white rounded-full shadow-sm flex items-center justify-center mx-auto mb-8 border border-slate-100">
+            <i class="fa-solid fa-medal text-3xl gold-accent"></i>
+          </div>
+          <h4 class="text-xl font-bold text-slate-900 mb-4">Professional Quality</h4>
+          <p class="text-slate-600 leading-relaxed">Uncompromising standards in design and technical execution.</p>
         </div>
-        <p class="text-gray-600 text-sm md:text-base leading-relaxed mb-6">"The branding package they created for us was beyond anything we imagined. Professional, creative, and delivered ahead of schedule."</p>
-        <p class="font-semibold">&mdash; Arjun Mehta</p>
-      </div>
-      <div class="testimonial-card bg-gray-50 p-6 md:p-8 rounded-3xl border border-gray-100 reveal">
-        <div class="flex mb-4">
-          <i class="fa-solid fa-star gold-accent"></i>
-          <i class="fa-solid fa-star gold-accent"></i>
-          <i class="fa-solid fa-star gold-accent"></i>
-          <i class="fa-solid fa-star gold-accent"></i>
-          <i class="fa-solid fa-star gold-accent"></i>
+        <div class="text-center">
+          <div class="w-20 h-20 bg-white rounded-full shadow-sm flex items-center justify-center mx-auto mb-8 border border-slate-100">
+            <i class="fa-solid fa-lightbulb text-3xl gold-accent"></i>
+          </div>
+          <h4 class="text-xl font-bold text-slate-900 mb-4">Strategic Thinking</h4>
+          <p class="text-slate-600 leading-relaxed">We design for impact and conversion, not just aesthetics.</p>
         </div>
-        <p class="text-gray-600 text-sm md:text-base leading-relaxed mb-6">"Their video editing work is top-notch. Our promotional content has never looked this good. Highly recommend StratumWeb!"</p>
-        <p class="font-semibold">&mdash; Neha Kapoor</p>
+        <div class="text-center">
+          <div class="w-20 h-20 bg-white rounded-full shadow-sm flex items-center justify-center mx-auto mb-8 border border-slate-100">
+            <i class="fa-solid fa-rocket text-3xl gold-accent"></i>
+          </div>
+          <h4 class="text-xl font-bold text-slate-900 mb-4">Reliable Delivery</h4>
+          <p class="text-slate-600 leading-relaxed">Consistent communication and meeting every deadline with precision.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Contact -->
-<section id="contact" class="py-16 md:py-28 bg-gray-50">
-  <div class="max-w-4xl mx-auto px-4 md:px-8 text-center">
-    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 md:mb-8 reveal heading-accent">Let's Build Something <span class="gold-accent">Remarkable</span></h2>
-    <p class="text-lg md:text-xl text-gray-600 mb-8 md:mb-12 reveal">Ready to take your brand to the next level?</p>
-    <div class="bg-white p-6 md:p-12 rounded-3xl shadow-sm reveal">
-      <form method="post" action="#contact" class="space-y-4 md:space-y-6">
-        {% csrf_token %}
-        {% if form.non_field_errors %}
-          <div class="text-red-600 text-sm">{{ form.non_field_errors }}</div>
-        {% endif %}
-
-        <div class="grid md:grid-cols-2 gap-4 md:gap-6">
+  <!-- Testimonials -->
+  <section id="testimonials" class="py-20 md:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="text-center mb-16 md:mb-24">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 heading-accent">Client Feedback</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-slate-50 p-10 rounded-3xl border border-slate-100">
+          <div class="flex gap-1 mb-6">
+            <i class="fa-solid fa-star text-xs gold-accent"></i>
+            <i class="fa-solid fa-star text-xs gold-accent"></i>
+            <i class="fa-solid fa-star text-xs gold-accent"></i>
+            <i class="fa-solid fa-star text-xs gold-accent"></i>
+            <i class="fa-solid fa-star text-xs gold-accent"></i>
+          </div>
+          <p class="text-slate-700 leading-relaxed mb-8">"StratumWeb transformed our online presence. Our sales doubled within months of the launch. Highly professional team."</p>
           <div>
+            <p class="font-bold text-slate-900">Priya Sharma</p>
+            <p class="text-xs text-slate-500 font-medium">E-commerce Founder</p>
+          </div>
+        </div>
+        <div class="bg-slate-50 p-10 rounded-3xl border border-slate-100 border-gold-light/20 shadow-lg shadow-gold-light/5">
+          <div class="flex gap-1 mb-6">
+            <i class="fa-solid fa-star text-xs gold-accent"></i>
+            <i class="fa-solid fa-star text-xs gold-accent"></i>
+            <i class="fa-solid fa-star text-xs gold-accent"></i>
+            <i class="fa-solid fa-star text-xs gold-accent"></i>
+            <i class="fa-solid fa-star text-xs gold-accent"></i>
+          </div>
+          <p class="text-slate-700 leading-relaxed mb-8">"The branding package exceeded all expectations. They captured our vision perfectly. Truly creative and efficient."</p>
+          <div>
+            <p class="font-bold text-slate-900">Arjun Mehta</p>
+            <p class="text-xs text-slate-500 font-medium">Marketing Director</p>
+          </div>
+        </div>
+        <div class="bg-slate-50 p-10 rounded-3xl border border-slate-100">
+          <div class="flex gap-1 mb-6">
+            <i class="fa-solid fa-star text-xs gold-accent"></i>
+            <i class="fa-solid fa-star text-xs gold-accent"></i>
+            <i class="fa-solid fa-star text-xs gold-accent"></i>
+            <i class="fa-solid fa-star text-xs gold-accent"></i>
+            <i class="fa-solid fa-star text-xs gold-accent"></i>
+          </div>
+          <p class="text-slate-700 leading-relaxed mb-8">"Their video production quality is world-class. Our promotional content has never looked this professional. Recommended!"</p>
+          <div>
+            <p class="font-bold text-slate-900">Neha Kapoor</p>
+            <p class="text-xs text-slate-500 font-medium">Content Creator</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-20 md:py-32 bg-slate-50">
+    <div class="max-w-4xl mx-auto px-4 md:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-8 heading-accent">Ready to Start?</h2>
+      <p class="text-lg text-slate-600 mb-12">Let's build something remarkable together.</p>
+      
+      {% if messages %}
+        {% for message in messages %}
+          <div class="mb-8 p-4 rounded-2xl {% if message.tags == 'success' %}bg-green-100 text-green-700{% else %}bg-red-100 text-red-700{% endif %}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      <div class="bg-white p-8 md:p-14 rounded-3xl shadow-xl border border-slate-100 text-left">
+        <form method="post" action="{% url 'home' %}#contact" class="space-y-6">
+          {% csrf_token %}
+          <div class="grid md:grid-cols-2 gap-6">
             {{ form.name }}
-            {% if form.name.errors %}<p class="text-red-500 text-sm mt-1">{{ form.name.errors.0 }}</p>{% endif %}
-          </div>
-          <div>
             {{ form.email }}
-            {% if form.email.errors %}<p class="text-red-500 text-sm mt-1">{{ form.email.errors.0 }}</p>{% endif %}
           </div>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-4 md:gap-6">
-          <div>
+          <div class="grid md:grid-cols-2 gap-6">
             {{ form.phone }}
-            {% if form.phone.errors %}<p class="text-red-500 text-sm mt-1">{{ form.phone.errors.0 }}</p>{% endif %}
-          </div>
-          <div>
             {{ form.country }}
           </div>
-        </div>
-
-        <div>
           {{ form.service }}
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-4 md:gap-6">
-          <div>
+          <div class="grid md:grid-cols-2 gap-6">
             {{ form.budget }}
-          </div>
-          <div>
             {{ form.timeline }}
           </div>
-        </div>
-
-        <div>
           {{ form.message }}
-          {% if form.message.errors %}<p class="text-red-500 text-sm mt-1">{{ form.message.errors.0 }}</p>{% endif %}
-        </div>
+          <button type="submit" class="btn-gold w-full py-5 text-lg rounded-2xl shadow-lg">
+            GET A FREE CONSULTATION
+          </button>
+        </form>
+      </div>
+      <div class="flex justify-center gap-10 mt-16 text-3xl text-slate-400">
+        {% for link in social_links %}
+          <a href="{{ link.url }}" class="hover:text-gold transition" target="_blank"><i class="{{ link.icon_class }}"></i></a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
 
-        <button type="submit" class="btn-gold w-full py-5 md:py-6 text-lg md:text-xl rounded-2xl">START YOUR PROJECT</button>
-      </form>
-    </div>
-    <div class="flex justify-center gap-8 md:gap-10 mt-10 md:mt-12 text-3xl md:text-4xl text-gray-600">
-      {% for link in social_links %}
-        <a href="{{ link.url }}" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="{{ link.platform }}">
-          <i class="{{ link.icon_class }}"></i>
-        </a>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section id="faq" class="py-16 md:py-28 bg-white">
-  <div class="max-w-3xl mx-auto px-4 md:px-8">
-    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-10 md:mb-16 reveal heading-accent">Frequently Asked Questions</h2>
-    <div class="space-y-4">
-      <div class="bg-gray-50 rounded-2xl overflow-hidden reveal">
-        <button class="faq-question w-full text-left px-6 md:px-8 py-5 flex justify-between items-center" onclick="toggleFAQ(this)">
-          <span class="font-semibold text-base md:text-lg">What services does StratumWeb offer?</span>
-          <i class="fa-solid fa-chevron-down gold-accent transition-transform duration-300"></i>
-        </button>
-        <div class="faq-answer">
-          <p class="px-6 md:px-8 pb-5 text-gray-600 text-sm md:text-base">We offer website development, video editing, graphic design, and logo & branding services — all tailored to your brand's unique needs.</p>
-        </div>
+  <!-- FAQ -->
+  <section id="faq" class="py-20 md:py-32 bg-white">
+    <div class="max-w-3xl mx-auto px-4 md:px-8">
+      <div class="text-center mb-16 md:mb-24">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 heading-accent">Common Questions</h2>
       </div>
-      <div class="bg-gray-50 rounded-2xl overflow-hidden reveal">
-        <button class="faq-question w-full text-left px-6 md:px-8 py-5 flex justify-between items-center" onclick="toggleFAQ(this)">
-          <span class="font-semibold text-base md:text-lg">How long does a typical project take?</span>
-          <i class="fa-solid fa-chevron-down gold-accent transition-transform duration-300"></i>
-        </button>
-        <div class="faq-answer">
-          <p class="px-6 md:px-8 pb-5 text-gray-600 text-sm md:text-base">Timelines vary by project scope. A standard website takes 2-4 weeks, while branding packages are typically completed within 1-2 weeks.</p>
+      <div class="space-y-6">
+        <div class="bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+          <button class="faq-question w-full text-left px-8 py-8 flex justify-between items-center group" onclick="toggleFAQ(this)">
+            <span class="font-bold text-lg text-slate-800 group-hover:text-gold transition">What services does StratumWeb offer?</span>
+            <div class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center transition-colors group-hover:bg-slate-100">
+              <i class="fa-solid fa-chevron-down text-sm gold-accent transition-transform duration-300"></i>
+            </div>
+          </button>
+          <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 px-8">
+            <div class="pb-8 text-slate-600 leading-relaxed">
+              We provide full-cycle website development, cinematic video editing, custom graphic design, and strategic brand identity solutions.
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="bg-gray-50 rounded-2xl overflow-hidden reveal">
-        <button class="faq-question w-full text-left px-6 md:px-8 py-5 flex justify-between items-center" onclick="toggleFAQ(this)">
-          <span class="font-semibold text-base md:text-lg">Do you offer revisions?</span>
-          <i class="fa-solid fa-chevron-down gold-accent transition-transform duration-300"></i>
-        </button>
-        <div class="faq-answer">
-          <p class="px-6 md:px-8 pb-5 text-gray-600 text-sm md:text-base">Absolutely. We include multiple revision rounds in every package to ensure the final result matches your vision perfectly.</p>
+        <div class="bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+          <button class="faq-question w-full text-left px-8 py-8 flex justify-between items-center group" onclick="toggleFAQ(this)">
+            <span class="font-bold text-lg text-slate-800 group-hover:text-gold transition">How long does a typical project take?</span>
+            <div class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center transition-colors group-hover:bg-slate-100">
+              <i class="fa-solid fa-chevron-down text-sm gold-accent transition-transform duration-300"></i>
+            </div>
+          </button>
+          <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 px-8">
+            <div class="pb-8 text-slate-600 leading-relaxed">
+              Web projects typically range from 2-6 weeks depending on complexity. Branding and design packages usually take 1-3 weeks.
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="bg-gray-50 rounded-2xl overflow-hidden reveal">
-        <button class="faq-question w-full text-left px-6 md:px-8 py-5 flex justify-between items-center" onclick="toggleFAQ(this)">
-          <span class="font-semibold text-base md:text-lg">How do I get started?</span>
-          <i class="fa-solid fa-chevron-down gold-accent transition-transform duration-300"></i>
-        </button>
-        <div class="faq-answer">
-          <p class="px-6 md:px-8 pb-5 text-gray-600 text-sm md:text-base">Simply fill out the contact form above or reach out via WhatsApp or email. We'll schedule a free consultation to discuss your project.</p>
+        <div class="bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+          <button class="faq-question w-full text-left px-8 py-8 flex justify-between items-center group" onclick="toggleFAQ(this)">
+            <span class="font-semibold text-base md:text-lg">Do you offer revisions?</span>
+            <i class="fa-solid fa-chevron-down gold-accent transition-transform duration-300"></i>
+          </button>
+          <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 px-8">
+            <p class="pb-8 text-gray-600 text-sm md:text-base">Absolutely. We include multiple revision rounds in every package to ensure the final result matches your vision perfectly.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 {% endblock %}

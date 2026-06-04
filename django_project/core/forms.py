@@ -9,33 +9,33 @@ class ContactForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={
                 'placeholder': 'Your Full Name *',
-                'class': 'form-input w-full border border-gray-300 rounded-2xl px-5 md:px-6 py-3.5 md:py-4 outline-none text-sm md:text-base',
+                'class': 'w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 outline-none focus:border-gold transition text-slate-900',
             }),
             'email': forms.EmailInput(attrs={
                 'placeholder': 'Business Email *',
-                'class': 'form-input w-full border border-gray-300 rounded-2xl px-5 md:px-6 py-3.5 md:py-4 outline-none text-sm md:text-base',
+                'class': 'w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 outline-none focus:border-gold transition text-slate-900',
             }),
             'phone': forms.TextInput(attrs={
-                'placeholder': 'Phone Number with Country Code * (e.g. +1 234 567 890)',
-                'class': 'form-input w-full border border-gray-300 rounded-2xl px-5 md:px-6 py-3.5 md:py-4 outline-none text-sm md:text-base',
+                'placeholder': 'Phone Number (e.g. +1 234 567 890) *',
+                'class': 'w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 outline-none focus:border-gold transition text-slate-900',
             }),
             'country': forms.TextInput(attrs={
-                'placeholder': 'Your Country (e.g. India, USA, UK)',
-                'class': 'form-input w-full border border-gray-300 rounded-2xl px-5 md:px-6 py-3.5 md:py-4 outline-none text-sm md:text-base',
+                'placeholder': 'Your Country',
+                'class': 'w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 outline-none focus:border-gold transition text-slate-900',
             }),
             'service': forms.Select(attrs={
-                'class': 'form-input w-full border border-gray-300 rounded-2xl px-5 md:px-6 py-3.5 md:py-4 outline-none text-sm md:text-base',
+                'class': 'w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 outline-none focus:border-gold transition text-slate-900',
             }),
             'budget': forms.Select(attrs={
-                'class': 'form-input w-full border border-gray-300 rounded-2xl px-5 md:px-6 py-3.5 md:py-4 outline-none text-sm md:text-base',
+                'class': 'w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 outline-none focus:border-gold transition text-slate-900',
             }),
             'timeline': forms.Select(attrs={
-                'class': 'form-input w-full border border-gray-300 rounded-2xl px-5 md:px-6 py-3.5 md:py-4 outline-none text-sm md:text-base',
+                'class': 'w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 outline-none focus:border-gold transition text-slate-900',
             }),
             'message': forms.Textarea(attrs={
                 'placeholder': 'Tell us about your project... *',
                 'rows': 5,
-                'class': 'form-input w-full border border-gray-300 rounded-3xl px-5 md:px-6 py-3.5 md:py-4 outline-none text-sm md:text-base',
+                'class': 'w-full bg-slate-50 border border-slate-200 rounded-3xl px-6 py-4 outline-none focus:border-gold transition text-slate-900',
             }),
         }
 
