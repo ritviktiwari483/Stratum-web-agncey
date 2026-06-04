@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ritviktiwari483.github.io/Stratum-web-agncey/sitemap.xml
