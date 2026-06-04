@@ -270,8 +270,36 @@ document.addEventListener('DOMContentLoaded', () => {
           btn.style.background = '';
           btn.disabled = false;
         }, 3000);
-      }
-    });
+  }
+});
+
+// ==========================================
+// LIGHTBOX
+// ==========================================
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxClose = document.getElementById('lightboxClose');
+
+document.querySelectorAll('.portfolio-card img').forEach((img) => {
+  img.style.cursor = 'pointer';
+  img.addEventListener('click', () => {
+    lightboxImg.src = img.src;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+lightbox.addEventListener('click', closeLightbox);
+lightboxClose.addEventListener('click', (e) => { e.stopPropagation(); closeLightbox(); });
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeLightbox();
+});
   }
 });
 

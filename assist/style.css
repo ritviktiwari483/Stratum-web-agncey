@@ -333,3 +333,8 @@ footer {
 
 /* Remove old animations that were too much */
 @keyframes goldPulse { 0% { opacity: 0.8; } 100% { opacity: 1; } }
+
+/* ===== LIGHTBOX ===== */
+#lightbox { display: none; }
+#lightbox.open { display: flex; }
+#lightboxImg { transition: transform 0.3s ease; }
