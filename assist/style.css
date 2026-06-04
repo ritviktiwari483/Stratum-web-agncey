@@ -44,10 +44,16 @@ h1, h2, h3, h4, .font-heading {
 }
 
 .hero-bg {
-  background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(255,255,255,0.92)), url('../hero-bg.jpg') center/cover no-repeat;
-  background-size: cover, cover;
+  background: url('../hero-bg.jpg') center/cover no-repeat;
   position: relative;
   overflow: hidden;
+}
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.35) 100%);
+  z-index: 1;
 }
 
 .nav-link { 
