@@ -49,12 +49,13 @@
   <div id="scrollProgress"><div id="scrollProgressBar"></div></div>
 
   <!-- Navbar -->
-  <nav id="navbar" class="bg-white sticky top-0 z-50 transition-all duration-300">
+  <!-- Navbar -->
+  <nav id="navbar" class="nav-glass sticky top-0 z-50 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 md:px-8 py-4 md:py-6 flex justify-between items-center">
       <div class="flex items-center logo-text">
-        <span class="text-2xl md:text-3xl font-bold tracking-tight text-slate-900">Stratum</span>
-        <span class="text-2xl md:text-3xl font-light gold-accent">Web</span>
-        <span class="ml-2 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 agency-badge">Agency</span>
+        <span class="text-2xl md:text-3xl font-extrabold tracking-tighter text-slate-900">Stratum</span>
+        <span class="text-2xl md:text-3xl font-medium gold-accent-mini ml-1">Web</span>
+        <span class="ml-3 agency-badge-premium">Agency</span>
       </div>
       <div class="hidden md:flex space-x-8 text-sm lg:text-base font-medium">
         <a href="#home" class="nav-link">Home</a>
@@ -63,7 +64,6 @@
         <a href="#process" class="nav-link">Process</a>
         <a href="#work" class="nav-link">Portfolio</a>
         <a href="#testimonials" class="nav-link">Reviews</a>
-        <a href="#faq" class="nav-link">FAQ</a>
         <a href="#contact" class="nav-link">Contact</a>
       </div>
       <div class="flex items-center gap-4">
@@ -78,7 +78,8 @@
         </button>
       </div>
     </div>
-    <div id="mobileMenu" class="md:hidden fixed left-0 right-0 max-h-0 bg-white shadow-2xl overflow-hidden transition-all duration-500 ease-in-out border-b border-slate-100" style="z-index: 999; backdrop-filter: blur(20px); background: rgba(255,255,255,0.98);">
+    
+    <div id="mobileMenu" class="md:hidden fixed left-0 right-0 max-h-0 bg-white/95 backdrop-blur-xl shadow-2xl overflow-hidden transition-all duration-500 ease-in-out border-b border-slate-100" style="z-index: 999;">
       <div class="px-8 py-10 flex flex-col items-center space-y-6 text-center">
         <a href="#home" class="block text-2xl font-bold text-slate-900 hover:text-gold transition-colors" onclick="closeMenu()">Home</a>
         <a href="#about" class="block text-2xl font-bold text-slate-900 hover:text-gold transition-colors" onclick="closeMenu()">About</a>
@@ -87,13 +88,6 @@
         <a href="#testimonials" class="block text-2xl font-bold text-slate-900 hover:text-gold transition-colors" onclick="closeMenu()">Reviews</a>
         <a href="#contact" class="block text-2xl font-bold text-slate-900 hover:text-gold transition-colors" onclick="closeMenu()">Contact</a>
         <a href="#contact" class="w-full mt-4 px-8 py-4 btn-gold rounded-full text-lg shadow-lg" onclick="closeMenu()">START PROJECT</a>
-        
-        <div class="pt-8 flex gap-8 text-2xl text-slate-400">
-          <a href="https://www.instagram.com/stratumweb_agency" target="_blank" class="hover:text-gold transition"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://wa.me/919876543210" target="_blank" class="hover:text-gold transition"><i class="fa-brands fa-whatsapp"></i></a>
-          <a href="mailto:hello@stratumweb.com" class="hover:text-gold transition"><i class="fa-solid fa-envelope"></i></a>
-          <a href="https://www.linkedin.com/company/stratumweb" target="_blank" class="hover:text-gold transition"><i class="fa-brands fa-linkedin"></i></a>
-        </div>
       </div>
     </div>
   </nav>
@@ -102,17 +96,17 @@
   <section id="home" class="hero-bg min-h-screen flex items-center relative overflow-hidden">
     <div class="hero-glow"></div>
     <div class="max-w-7xl mx-auto px-4 md:px-8 text-center relative z-10 pt-24 md:pt-20">
-      <h1 class="text-4xl sm:text-7xl md:text-9xl font-bold mb-6 md:mb-8 hero-title anim-hero">
-        WE CREATE<br><span class="gold-accent">IMPACTFUL</span><br>DIGITAL <span class="text-white">CULTURE.</span>
+      <h1 class="text-5xl sm:text-7xl md:text-[8rem] font-extrabold mb-6 md:mb-8 hero-title anim-hero tracking-tighter">
+        WE CREATE<br><span class="gold-accent-shimmer">IMPACTFUL</span><br><span class="text-white/90">DIGITAL CULTURE.</span>
       </h1>
-      <p class="max-w-xl mx-auto text-base md:text-2xl text-white/80 mb-10 md:mb-12 anim-hero-2 leading-relaxed px-4 md:px-0">
-        Strategic design and professional development for brands ready to lead their industry. 
+      <p class="max-w-xl mx-auto text-base md:text-xl text-white/70 mb-10 md:mb-12 anim-hero-2 leading-relaxed px-4 md:px-0 font-medium">
+        Strategic design and architectural development for brands ready to lead their industry into the next era.
       </p>
       <div class="flex flex-col sm:flex-row justify-center gap-4 md:gap-6 anim-hero-3 px-6 sm:px-0">
-        <a href="#work" class="btn-outline px-10 md:px-12 py-4 md:py-5 text-sm md:text-base font-semibold rounded-full border-white text-white hover:bg-white hover:text-slate-900 transition-all duration-300">
+        <a href="#work" class="px-10 md:px-12 py-4 md:py-5 text-sm md:text-base font-bold rounded-full bg-white text-slate-900 hover:bg-slate-100 transition-all duration-300 shadow-xl">
           VIEW PORTFOLIO
         </a>
-        <a href="#contact" class="btn-gold px-10 md:px-12 py-4 md:py-5 text-sm md:text-base font-semibold rounded-full shadow-xl transition-all duration-300">
+        <a href="#contact" class="btn-gold px-10 md:px-12 py-4 md:py-5 text-sm md:text-base font-bold rounded-full shadow-2xl transition-all duration-300">
           START YOUR PROJECT
         </a>
       </div>
@@ -256,25 +250,25 @@
       <div class="text-center mb-16 md:mb-24">
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 heading-accent">Selected Projects</h2>
       </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div class="grid md:grid-cols-2 gap-10">
         <!-- Project 1: School Feedback (gallery-5) -->
         <div class="portfolio-card group">
           <div class="overflow-hidden relative">
-            <img src="assist/gallery-5.jpg" alt="ASN School Feedback Portal" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
-              <p class="text-white text-sm">Institutional Feedback Ecosystem</p>
+            <img src="assist/gallery-5.jpg" alt="ASN School Feedback Portal" class="w-full h-[450px] object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-10">
+              <p class="text-white text-sm font-medium">Institutional Feedback Ecosystem</p>
             </div>
           </div>
-          <div class="p-8">
+          <div class="p-10">
             <div class="flex justify-between items-start mb-4">
-              <h3 class="font-bold text-2xl text-slate-900">ASN EduPortal</h3>
+              <h3 class="font-bold text-3xl text-slate-900">ASN EduPortal</h3>
               <span class="text-[10px] px-3 py-1 bg-slate-100 rounded-full font-bold uppercase tracking-wider text-slate-500">Education</span>
             </div>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+            <p class="text-slate-600 text-base leading-relaxed mb-8">
               A comprehensive feedback portal for ASN Senior Secondary School. Designed to bridge communication between students and administration through streamlined, real-time data collection.
             </p>
-            <a href="#" class="text-gold font-bold text-sm flex items-center gap-2 hover:gap-3 transition-all">
-              VIEW CASE STUDY <i class="fa-solid fa-arrow-right"></i>
+            <a href="#" class="text-gold font-bold text-sm tracking-widest flex items-center gap-2 hover:gap-4 transition-all">
+              EXPLORE CASE STUDY <i class="fa-solid fa-arrow-right-long"></i>
             </a>
           </div>
         </div>
@@ -282,21 +276,21 @@
         <!-- Project 2: Tracking System (gallery-4) -->
         <div class="portfolio-card group">
           <div class="overflow-hidden relative">
-            <img src="assist/gallery-4.jpg" alt="MedConnect Tracking Dashboard" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
-              <p class="text-white text-sm">Real-time Health Data Tracking</p>
+            <img src="assist/gallery-4.jpg" alt="MedConnect Tracking Dashboard" class="w-full h-[450px] object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-10">
+              <p class="text-white text-sm font-medium">Real-time Health Data Tracking</p>
             </div>
           </div>
-          <div class="p-8">
+          <div class="p-10">
             <div class="flex justify-between items-start mb-4">
-              <h3 class="font-bold text-2xl text-slate-900">MedConnect Pro</h3>
+              <h3 class="font-bold text-3xl text-slate-900">MedConnect Pro</h3>
               <span class="text-[10px] px-3 py-1 bg-slate-100 rounded-full font-bold uppercase tracking-wider text-slate-500">Healthcare</span>
             </div>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
-              A precise patient management system featuring live vital tracking. Engineered with advanced data visualization for monitoring heart rates, blood pressure, and glucose levels in real-time.
+            <p class="text-slate-600 text-base leading-relaxed mb-8">
+              A precise patient management system featuring live vital tracking. Engineered with advanced data visualization for monitoring heart rates and glucose levels in real-time.
             </p>
-            <a href="#" class="text-gold font-bold text-sm flex items-center gap-2 hover:gap-3 transition-all">
-              VIEW CASE STUDY <i class="fa-solid fa-arrow-right"></i>
+            <a href="#" class="text-gold font-bold text-sm tracking-widest flex items-center gap-2 hover:gap-4 transition-all">
+              EXPLORE CASE STUDY <i class="fa-solid fa-arrow-right-long"></i>
             </a>
           </div>
         </div>
@@ -304,21 +298,21 @@
         <!-- Project 3: Commercial Branding (gallery-3) -->
         <div class="portfolio-card group">
           <div class="overflow-hidden relative">
-            <img src="assist/gallery-3.jpg" alt="Aurora Fashion Branding" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
-              <p class="text-white text-sm">High-End Fashion E-commerce</p>
+            <img src="assist/gallery-3.jpg" alt="Aurora Fashion Branding" class="w-full h-[450px] object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-10">
+              <p class="text-white text-sm font-medium">High-End Fashion E-commerce</p>
             </div>
           </div>
-          <div class="p-8">
+          <div class="p-10">
             <div class="flex justify-between items-start mb-4">
-              <h3 class="font-bold text-2xl text-slate-900">Aurora Identity</h3>
+              <h3 class="font-bold text-3xl text-slate-900">Aurora Identity</h3>
               <span class="text-[10px] px-3 py-1 bg-slate-100 rounded-full font-bold uppercase tracking-wider text-slate-500">Branding</span>
             </div>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
-              A luxury commercial branding project for Aurora Fashion. We developed a minimalist yet powerful visual language that emphasizes elegance and drives high-conversion retail growth.
+            <p class="text-slate-600 text-base leading-relaxed mb-8">
+              A luxury commercial branding project for Aurora Fashion. We developed a minimalist yet powerful visual language that emphasizes elegance and drives retail growth.
             </p>
-            <a href="#" class="text-gold font-bold text-sm flex items-center gap-2 hover:gap-3 transition-all">
-              VIEW CASE STUDY <i class="fa-solid fa-arrow-right"></i>
+            <a href="#" class="text-gold font-bold text-sm tracking-widest flex items-center gap-2 hover:gap-4 transition-all">
+              EXPLORE CASE STUDY <i class="fa-solid fa-arrow-right-long"></i>
             </a>
           </div>
         </div>
@@ -326,43 +320,21 @@
         <!-- Project 4: Coffee Shop (gallery-2) -->
         <div class="portfolio-card group">
           <div class="overflow-hidden relative">
-            <img src="assist/gallery-2.jpg" alt="Blackwood Coffee Website" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
-              <p class="text-white text-sm">Artisanal Retail Experience</p>
+            <img src="assist/gallery-2.jpg" alt="Blackwood Coffee Website" class="w-full h-[450px] object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-10">
+              <p class="text-white text-sm font-medium">Artisanal Retail Experience</p>
             </div>
           </div>
-          <div class="p-8">
+          <div class="p-10">
             <div class="flex justify-between items-start mb-4">
-              <h3 class="font-bold text-2xl text-slate-900">Blackwood Brews</h3>
+              <h3 class="font-bold text-3xl text-slate-900">Blackwood Brews</h3>
               <span class="text-[10px] px-3 py-1 bg-slate-100 rounded-full font-bold uppercase tracking-wider text-slate-500">Retail</span>
             </div>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+            <p class="text-slate-600 text-base leading-relaxed mb-8">
               An immersive digital presence for Blackwood Coffee Roasters. Featuring a rich, atmospheric design and seamless shop integration that mirrors the premium quality of their roasts.
             </p>
-            <a href="#" class="text-gold font-bold text-sm flex items-center gap-2 hover:gap-3 transition-all">
-              VIEW CASE STUDY <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Project 5: FinTech Branding (gallery-1) -->
-        <div class="portfolio-card group">
-          <div class="overflow-hidden relative">
-            <img src="assist/gallery-1.jpg" alt="Blockwave FinTech Admin" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
-              <p class="text-white text-sm">Web3 Finance Ecosystem</p>
-            </div>
-          </div>
-          <div class="p-8">
-            <div class="flex justify-between items-start mb-4">
-              <h3 class="font-bold text-2xl text-slate-900">Blockwave Finance</h3>
-              <span class="text-[10px] px-3 py-1 bg-slate-100 rounded-full font-bold uppercase tracking-wider text-slate-500">FinTech</span>
-            </div>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
-              A sleek, futuristic branding and dashboard design for Blockwave. We created a visually stunning Web3 interface that simplifies complex DeFi assets into an intuitive user experience.
-            </p>
-            <a href="#" class="text-gold font-bold text-sm flex items-center gap-2 hover:gap-3 transition-all">
-              VIEW CASE STUDY <i class="fa-solid fa-arrow-right"></i>
+            <a href="#" class="text-gold font-bold text-sm tracking-widest flex items-center gap-2 hover:gap-4 transition-all">
+              EXPLORE CASE STUDY <i class="fa-solid fa-arrow-right-long"></i>
             </a>
           </div>
         </div>

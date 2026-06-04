@@ -65,44 +65,45 @@ h1, h2, h3, h4, .font-heading {
   transition: all 0.3s ease; 
   position: relative; 
   color: var(--slate-600);
+  font-weight: 500;
 }
-.nav-link:hover { color: var(--primary); }
-.nav-link.active { color: var(--primary); font-weight: 600; }
-.nav-link.active::after {
+.nav-link::after {
   content: '';
   position: absolute;
   bottom: -4px;
-  left: 0;
-  width: 100%;
+  left: 50%;
+  width: 0;
   height: 2px;
   background: var(--gold);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
 }
+.nav-link:hover { color: var(--slate-900); }
+.nav-link:hover::after { width: 100%; }
 
-.gold-accent { 
-  background: var(--gold-gradient);
+.nav-link.active { color: var(--gold-dark); font-weight: 600; }
+.nav-link.active::after { width: 100%; }
+
+.gold-accent-mini { 
+  background: linear-gradient(135deg, #A68626 0%, #D4AF37 45%, #F9E076 50%, #D4AF37 55%, #A68626 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  position: relative;
+  animation: shimmer 5s linear infinite;
   display: inline-block;
 }
 
-.gold-accent::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-  transform: skewX(-20deg);
-  animation: shine-text 5s infinite;
-}
-
-@keyframes shine-text {
-  0% { left: -100%; }
-  15% { left: 200%; }
-  100% { left: 200%; }
+.agency-badge-premium {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  padding: 3px 10px;
+  background: rgba(226, 232, 240, 0.4);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 6px;
+  color: #64748b;
+  text-transform: uppercase;
 }
 section { scroll-margin-top: 90px; }
 
@@ -268,47 +269,70 @@ footer {
 
 /* Attractive Hero H1 */
 .hero-title {
-  background: linear-gradient(135deg, var(--slate-900) 0%, #1e293b 50%, var(--gold) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  line-height: 1;
+  color: var(--white);
+  line-height: 1.1;
   letter-spacing: -0.04em;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 .hero-glow {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 60vw;
-  height: 60vw;
-  background: radial-gradient(circle, rgba(197, 160, 50, 0.03) 0%, transparent 70%);
+  width: 70vw;
+  height: 70vw;
+  background: radial-gradient(circle, rgba(166, 134, 38, 0.1) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
 
-.btn-gold {
-  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-  border: none;
+.hero-bg {
+  background: linear-gradient(rgba(15, 23, 42, 0.3), rgba(15, 23, 42, 0.5)), url('hero-bg.jpg') center/cover no-repeat;
   position: relative;
   overflow: hidden;
 }
 
-.btn-gold::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+.gold-accent-shimmer {
+  background: linear-gradient(to right, #A68626 0%, #D4AF37 20%, #F9E076 40%, #D4AF37 60%, #A68626 80%, #D4AF37 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
 }
 
-.btn-gold:hover::after {
-  opacity: 1;
+@keyframes shimmer {
+  to { background-position: 200% center; }
+}
+
+.nav-glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-gold {
+  background: var(--gold-gradient);
+  border: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: 0.5s;
+}
+
+.btn-gold:hover::before {
+  left: 100%;
 }
 
 /* ===== FLOATING SOCIALS ===== */
