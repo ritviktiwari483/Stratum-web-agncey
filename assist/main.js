@@ -210,5 +210,29 @@ if (backToTop) {
   backToTop.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
-}
+}// ==========================================
+// CONTACT FORM HANDLER
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+  const contactForm = document.querySelector('#contact form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // Add a cool success animation or message
+      const btn = contactForm.querySelector('button');
+      const originalText = btn.innerHTML;
+      
+      btn.innerHTML = '<i class="fa-solid fa-circle-check scale-125"></i> SENT SUCCESSFULLY';
+      btn.classList.add('bg-green-600');
+      btn.style.background = '#10b981'; // Success green
+      
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.style.background = '';
+        btn.classList.remove('bg-green-600');
+        contactForm.reset();
+      }, 3000);
+    });
+  }
+});
 
