@@ -13,8 +13,13 @@
   --gold-gradient: linear-gradient(135deg, #A68626 0%, #D4AF37 45%, #F9E076 50%, #D4AF37 55%, #A68626 100%);
 }
 
-html { 
-  scroll-behavior: smooth; 
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -313,6 +318,17 @@ footer {
 .instagram-float:hover {
   transform: scale(1.1) translateY(-5px);
   box-shadow: 0 20px 40px -10px rgba(214, 36, 159, 0.5);
+}
+
+@media (max-width: 640px) {
+  .instagram-float { width: 3.5rem; height: 3.5rem; }
+  .back-to-top { width: 3.5rem; height: 3.5rem; padding: 0 !important; display: flex !important; align-items: center; justify-content: center; }
+  .hero-title { 
+    font-size: 2.5rem; 
+    line-height: 1.1; 
+    word-break: break-word; /* Prevent "slicing" overflow */
+  }
+  h2 { word-break: break-word; }
 }
 
 /* Remove old animations that were too much */
