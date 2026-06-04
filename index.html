@@ -399,10 +399,51 @@
         <form class="space-y-6">
           <div class="grid md:grid-cols-2 gap-6">
             <input type="text" placeholder="Your Name" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 outline-none focus:border-gold transition text-slate-900">
-            <input type="tel" placeholder="Phone Number" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 outline-none focus:border-gold transition text-slate-900">
+            <div class="flex gap-2">
+              <select class="w-1/3 bg-slate-50 border border-slate-200 rounded-2xl px-3 py-4 outline-none focus:border-gold transition text-slate-900 text-sm">
+                <option value="+1">🇺🇸 +1</option>
+                <option value="+44">🇬🇧 +44</option>
+                <option value="+91" selected>🇮🇳 +91</option>
+                <option value="+61">🇦🇺 +61</option>
+                <option value="+81">🇯🇵 +81</option>
+                <option value="+86">🇨🇳 +86</option>
+                <option value="+49">🇩🇪 +49</option>
+                <option value="+33">🇫🇷 +33</option>
+                <option value="+55">🇧🇷 +55</option>
+                <option value="+971">🇦🇪 +971</option>
+                <option value="+82">🇰🇷 +82</option>
+                <option value="+65">🇸🇬 +65</option>
+                <option value="+60">🇲🇾 +60</option>
+                <option value="+63">🇵🇭 +63</option>
+                <option value="+1">🇨🇦 +1</option>
+                <option value="+39">🇮🇹 +39</option>
+                <option value="+34">🇪🇸 +34</option>
+                <option value="+31">🇳🇱 +31</option>
+                <option value="+46">🇸🇪 +46</option>
+                <option value="+41">🇨🇭 +41</option>
+                <option value="+47">🇳🇴 +47</option>
+                <option value="+45">🇩🇰 +45</option>
+                <option value="+358">🇫🇮 +358</option>
+                <option value="+64">🇳🇿 +64</option>
+                <option value="+27">🇿🇦 +27</option>
+                <option value="+52">🇲🇽 +52</option>
+                <option value="+54">🇦🇷 +54</option>
+                <option value="+56">🇨🇱 +56</option>
+                <option value="+57">🇨🇴 +57</option>
+                <option value="+98">🇮🇷 +98</option>
+                <option value="+90">🇹🇷 +90</option>
+                <option value="+966">🇸🇦 +966</option>
+                <option value="+972">🇮🇱 +972</option>
+                <option value="+20">🇪🇬 +20</option>
+                <option value="+234">🇳🇬 +234</option>
+                <option value="+254">🇰🇪 +254</option>
+                <option value="+233">🇬🇭 +233</option>
+              </select>
+              <input type="tel" placeholder="Phone Number" class="w-2/3 bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 outline-none focus:border-gold transition text-slate-900">
+            </div>
           </div>
-          <input type="email" placeholder="Business Email" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 outline-none focus:border-gold transition text-slate-900">
-          <textarea placeholder="Tell us about your project..." rows="5" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 outline-none focus:border-gold transition text-slate-900"></textarea>
+          <input type="email" name="email" placeholder="Business Email" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 outline-none focus:border-gold transition text-slate-900" required>
+          <textarea name="message" placeholder="Tell us about your project..." rows="5" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 outline-none focus:border-gold transition text-slate-900" required></textarea>
           <button type="submit" class="btn-gold w-full py-5 text-lg rounded-2xl">
             GET A FREE CONSULTATION
           </button>

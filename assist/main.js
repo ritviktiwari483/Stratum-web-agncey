@@ -211,27 +211,50 @@ if (backToTop) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }// ==========================================
-// CONTACT FORM HANDLER
+// CONTACT FORM HANDLER (GOOGLE SHEETS)
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
   const contactForm = document.querySelector('#contact form');
   if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      // Add a cool success animation or message
+      
       const btn = contactForm.querySelector('button');
       const originalText = btn.innerHTML;
       
-      btn.innerHTML = '<i class="fa-solid fa-circle-check scale-125"></i> SENT SUCCESSFULLY';
-      btn.classList.add('bg-green-600');
-      btn.style.background = '#10b981'; // Success green
+      // Your Google Sheets Web App URL
+      const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz1Ti_v284TjBn0ArRitkEfvKWimtqIOneepquFZD7AHf6jsHfjIwPBrq_j5x8lJetC/exec";
       
-      setTimeout(() => {
-        btn.innerHTML = originalText;
-        btn.style.background = '';
-        btn.classList.remove('bg-green-600');
+      try {
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> SAVING LEAD...';
+        btn.disabled = true;
+
+        // Collect form data
+        const formData = new FormData(contactForm);
+        
+        // Use Fetch with no-cors if needed for Google Scripts, or a standard post
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          body: formData,
+          mode: 'no-cors' // Google Apps Script requires this for cross-domain POST without preflight
+        });
+
+        // Since we use no-cors, we assume success if no crash
+        btn.innerHTML = '<i class="fa-solid fa-circle-check scale-125"></i> SENT SUCCESSFULLY';
+        btn.style.background = '#10b981';
         contactForm.reset();
-      }, 3000);
+        
+      } catch (error) {
+        btn.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> ERROR - TRY AGAIN';
+        btn.style.background = '#ef4444';
+        console.error('Error!', error.message);
+      } finally {
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 3000);
+      }
     });
   }
 });
