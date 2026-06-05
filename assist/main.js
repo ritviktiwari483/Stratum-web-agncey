@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return; 
       }
 
-      const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwj9dfYttGfhyBS1ese38Oc2VWO20YKGpujnxGt1jgbYT1JIPwbS4lKc3R6V39cbQpC/exec";
+      const SCRIPT_URL = "REPLACE_WITH_YOUR_NEW_SCRIPT_URL";
 
       try {
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> SENDING...';
