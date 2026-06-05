@@ -1,16 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
   --primary: #1E3A8A;
   --primary-light: #3B82F6;
+  --primary-dark: #0F1F4A;
   --gold: #D4AF37;
   --gold-light: #F9E076;
   --gold-dark: #C5A032;
   --slate-900: #0F172A;
+  --slate-800: #1E293B;
   --slate-600: #475569;
   --slate-100: #F1F5F9;
   --white: #FFFFFF;
   --gold-gradient: linear-gradient(135deg, #A68626 0%, #D4AF37 45%, #F9E076 50%, #D4AF37 55%, #A68626 100%);
+  --premium-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --neon-gradient: linear-gradient(135deg, #667eea 0%, #f093fb 50%, #764ba2 100%);
 }
 
 html {
@@ -37,15 +41,16 @@ h1, h2, h3, h4, .font-heading {
   top: 0;
   left: 0;
   width: 100%;
-  height: 3px;
+  height: 4px;
   background: transparent;
   z-index: 100;
 }
 #scrollProgressBar {
   height: 100%;
-  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  background: linear-gradient(90deg, #667eea, var(--gold), #f093fb);
   width: 0%;
   transition: width 0.1s ease-out;
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.8);
 }
 
 
@@ -55,22 +60,32 @@ h1, h2, h3, h4, .font-heading {
   position: relative; 
   color: var(--slate-600);
   font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
 }
 .nav-link::after {
   content: '';
   position: absolute;
-  bottom: -4px;
+  bottom: -6px;
   left: 50%;
   width: 0;
-  height: 2px;
-  background: var(--gold);
+  height: 2.5px;
+  background: linear-gradient(90deg, var(--gold), #667eea);
   transition: all 0.3s ease;
   transform: translateX(-50%);
+  border-radius: 2px;
 }
-.nav-link:hover { color: var(--slate-900); }
+.nav-link:hover { 
+  color: var(--slate-900); 
+  transform: translateY(-2px);
+}
 .nav-link:hover::after { width: 100%; }
 
-.nav-link.active { color: var(--gold-dark); font-weight: 600; }
+.nav-link.active { 
+  color: var(--gold-dark); 
+  font-weight: 700;
+} 
 .nav-link.active::after { width: 100%; }
 
 .gold-accent-mini { 
@@ -98,33 +113,55 @@ section { scroll-margin-top: 90px; }
 
 /* ===== SERVICE CARDS ===== */
 .service-card {
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  border: 1px solid var(--slate-100);
-  border-radius: 1.25rem;
-  padding: 2rem;
-  background: var(--white);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  border: 1.5px solid rgba(212, 175, 55, 0.2);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+.service-card:hover::before {
+  left: 100%;
 }
 .service-card:hover {
-  border-color: var(--gold-light);
-  transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+  border-color: var(--gold);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(212, 175, 55, 0.25), 0 0 1px rgba(212, 175, 55, 0.1);
+  background: rgba(255, 255, 255, 0.95);
 }
-.service-card i { transition: transform 0.3s ease; }
-.service-card:hover i { transform: scale(1.1); }
+.service-card i { 
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.service-card:hover i { 
+  transform: scale(1.25) rotate(10deg);
+}
 
 /* ===== PORTFOLIO ===== */
 .portfolio-card {
-  transition: all 0.4s ease;
-  border-radius: 1.25rem;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 1.5rem;
   overflow: hidden;
   background: var(--white);
-  border: 1px solid var(--slate-100);
+  border: 1.5px solid rgba(212, 175, 55, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 .portfolio-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  border-color: var(--gold-light);
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(212, 175, 55, 0.2), 0 0 1px rgba(212, 175, 55, 0.1);
+  border-color: var(--gold);
 }
 
 /* ===== BUTTONS ===== */
