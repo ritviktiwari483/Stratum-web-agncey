@@ -239,28 +239,26 @@ document.addEventListener('DOMContentLoaded', () => {
         return; 
       }
 
-      const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwdi66INPL-RpN11V--qUghZb87e2OsR7hta6l_qP247LjlZ0OMXBpnpkUrRjVxZqUZ/exec";
+      const API_URL = "https://api.web3forms.com/submit";
 
       try {
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> SENDING...';
         btn.disabled = true;
 
-        const searchParams = new URLSearchParams();
-        for (const pair of formData) {
-          searchParams.append(pair[0], pair[1]);
-        }
-
-        await fetch(SCRIPT_URL, {
+        const response = await fetch(API_URL, {
           method: 'POST',
-          body: searchParams,
-          mode: 'no-cors'
+          body: formData
         });
+
+        const data = await response.json();
+
+        if (!response.ok) throw new Error(data.message || "Submission failed");
 
         lastSubmitTime = currentTime;
         btn.innerHTML = '<i class="fa-solid fa-circle-check scale-125"></i> SENT SUCCESSFULLY';
         btn.style.background = '#10b981';
         contactForm.reset();
-        
+
       } catch (error) {
         btn.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> ERROR - TRY AGAIN';
         btn.style.background = '#ef4444';
