@@ -239,24 +239,29 @@ document.addEventListener('DOMContentLoaded', () => {
         return; 
       }
 
-      const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwj9dfYttGfhyBS1ese38Oc2VWO20YKGpujnxGt1jgbYT1JIPwbS4lKc3R6V39cbQpC/exec";
-      
+      const API_URL = "http://localhost:8000/api/contact";
+
       try {
-        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> SAVING LEAD...';
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> SENDING...';
         btn.disabled = true;
 
-        const searchParams = new URLSearchParams();
-        for (const pair of formData) {
-          searchParams.append(pair[0], pair[1]);
-        }
-        
-        await fetch(SCRIPT_URL, {
-          method: 'POST',
-          body: searchParams,
-          mode: 'no-cors'
+        const body = JSON.stringify({
+          name: formData.get("full_name"),
+          phone: formData.get("phone"),
+          email: formData.get("email"),
+          message: formData.get("message")
         });
 
-        lastSubmitTime = currentTime; // Update throttle time
+        const res = await fetch(API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body
+        });
+        const data = await res.json();
+
+        if (!res.ok) throw new Error(data.message || "Server error");
+
+        lastSubmitTime = currentTime;
         btn.innerHTML = '<i class="fa-solid fa-circle-check scale-125"></i> SENT SUCCESSFULLY';
         btn.style.background = '#10b981';
         contactForm.reset();

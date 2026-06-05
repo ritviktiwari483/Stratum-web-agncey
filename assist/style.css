@@ -48,18 +48,7 @@ h1, h2, h3, h4, .font-heading {
   transition: width 0.1s ease-out;
 }
 
-.hero-bg {
-  background: url('hero-bg.jpg') center/cover no-repeat;
-  position: relative;
-  overflow: hidden;
-}
-.hero-bg::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at center, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.35) 100%);
-  z-index: 1;
-}
+
 
 .nav-link { 
   transition: all 0.3s ease; 
@@ -284,13 +273,32 @@ footer {
   height: 70vw;
   background: radial-gradient(circle, rgba(166, 134, 38, 0.1) 0%, transparent 70%);
   pointer-events: none;
-  z-index: 0;
+  z-index: 2;
 }
 
 .hero-bg {
-  background: linear-gradient(rgba(15, 23, 42, 0.3), rgba(15, 23, 42, 0.5)), url('hero-bg.jpg') center/cover no-repeat;
   position: relative;
   overflow: hidden;
+}
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('hero-bg.jpg') center/cover no-repeat;
+  animation: heroZoom 12s ease-in-out infinite alternate;
+  z-index: 0;
+}
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(15, 23, 42, 0.3), rgba(15, 23, 42, 0.5));
+  z-index: 1;
+}
+
+@keyframes heroZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
 }
 
 .gold-accent-shimmer {
