@@ -47,7 +47,7 @@ def admin():
       tr:hover td{background:#0f172a}
       .count{color:#94a3b8;margin-bottom:16px}
     </style></head><body>
-    <h1>✦ Leads ({{ leads|length }})</h1>
+    <h1>Leads ({{ leads|length }})</h1>
     <table><thead><tr><th>#</th><th>Name</th><th>Phone</th><th>Email</th><th>Message</th><th>Date</th></tr></thead>
     <tbody>{{ rows|safe }}</tbody></table></body></html>
     """, leads=leads, rows=rows)
