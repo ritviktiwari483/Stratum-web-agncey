@@ -410,12 +410,18 @@ footer {
 
 /* ===== PRICING ===== */
 .pricing-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
 }
 .pricing-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15);
+  transform: translateY(-12px);
+  box-shadow: 0 30px 60px -15px rgba(0,0,0,0.2);
 }
 .pricing-card.border-2:hover {
-  box-shadow: 0 20px 40px -10px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 30px 60px -15px rgba(212, 175, 55, 0.3);
+}
+.pricing-card li {
+  transition: transform 0.2s ease;
+}
+.pricing-card li:hover {
+  transform: translateX(4px);
 }

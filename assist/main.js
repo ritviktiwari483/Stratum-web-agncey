@@ -71,6 +71,7 @@ if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
     animateSubItems('.service-card', '#services');
     animateSubItems('.process-step', '#process');
     animateSubItems('.portfolio-card', '#work');
+    animateSubItems('.pricing-card', '#pricing');
 
     // ==========================================
     // STATS COUNTER

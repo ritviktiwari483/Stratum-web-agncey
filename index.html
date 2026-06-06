@@ -121,7 +121,7 @@
   </section>
 
   <!-- About -->
-  <section id="about" class="py-20 md:py-32 bg-slate-50">
+  <section id="about" class="py-20 md:py-32 bg-slate-50 gsap-reveal">
     <div class="max-w-7xl mx-auto px-4 md:px-8">
       <div class="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
         <div>
@@ -176,7 +176,7 @@
   </section>
 
   <!-- Services -->
-  <section id="services" class="py-20 md:py-32 bg-white">
+  <section id="services" class="py-20 md:py-32 bg-white gsap-reveal">
     <div class="max-w-7xl mx-auto px-4 md:px-8">
       <div class="text-center mb-16 md:mb-24">
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 heading-accent">Our Core Expertise</h2>
@@ -215,7 +215,7 @@
   </section>
 
   <!-- Process -->
-  <section id="process" class="py-20 md:py-32 bg-slate-50">
+  <section id="process" class="py-20 md:py-32 bg-slate-50 gsap-reveal">
     <div class="max-w-7xl mx-auto px-4 md:px-8">
       <div class="text-center mb-16 md:mb-24">
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 heading-accent">Our Methodology</h2>
@@ -246,7 +246,7 @@
   </section>
 
   <!-- Portfolio -->
-  <section id="work" class="py-20 md:py-32 bg-white">
+  <section id="work" class="py-20 md:py-32 bg-white gsap-reveal">
     <div class="max-w-7xl mx-auto px-4 md:px-8">
       <div class="text-center mb-16 md:mb-24">
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 heading-accent">Selected Projects</h2>
@@ -322,7 +322,7 @@
   </section>
 
   <!-- Why Choose Us -->
-  <section id="why-choose" class="py-20 md:py-32 bg-slate-50">
+  <section id="why-choose" class="py-20 md:py-32 bg-slate-50 gsap-reveal">
     <div class="max-w-7xl mx-auto px-4 md:px-8">
       <div class="text-center mb-16 md:mb-24">
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 heading-accent">Why StratumWeb</h2>
@@ -354,70 +354,88 @@
   </section>
 
   <!-- Pricing -->
-  <section id="pricing" class="py-20 md:py-32 bg-slate-900">
-    <div class="max-w-7xl mx-auto px-4 md:px-8">
+  <section id="pricing" class="py-20 md:py-32 bg-slate-900 relative overflow-hidden gsap-reveal">
+    <div class="absolute inset-0 opacity-5" style="background: radial-gradient(circle at 20% 50%, #d4af37 0%, transparent 50%), radial-gradient(circle at 80% 50%, #d4af37 0%, transparent 50%);"></div>
+    <div class="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
       <div class="text-center mb-16 md:mb-24">
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white heading-accent">Transparent Pricing</h2>
+        <span class="text-gold text-sm font-bold uppercase tracking-[0.3em]">Investment</span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mt-4">Choose Your Plan</h2>
+        <p class="text-slate-400 mt-4 max-w-lg mx-auto">Fixed pricing, zero surprises. Every plan includes our quality guarantee.</p>
       </div>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="pricing-card bg-white p-8 md:p-10 rounded-3xl border border-slate-100 relative flex flex-col">
-          <div class="mb-8">
-            <h3 class="text-lg font-bold text-slate-900 uppercase tracking-wider">Starter</h3>
-            <div class="mt-4 flex items-baseline gap-1">
-              <span class="text-4xl md:text-5xl font-extrabold text-slate-900">₹15K</span>
-              <span class="text-slate-400 text-sm">/project</span>
+      <div class="grid md:grid-cols-3 gap-6 lg:gap-8 items-start max-w-5xl mx-auto">
+        <!-- Starter -->
+        <div class="pricing-card bg-gradient-to-b from-white to-slate-50 p-8 md:p-10 rounded-3xl border border-slate-200 relative flex flex-col">
+          <div class="mb-6">
+            <div class="w-14 h-14 bg-gradient-to-br from-gold/20 to-gold/5 rounded-2xl flex items-center justify-center mb-5">
+              <i class="fa-solid fa-rocket text-xl gold-accent"></i>
             </div>
+            <h3 class="text-lg font-bold text-slate-900">Starter</h3>
+            <p class="text-slate-500 text-sm mt-1">Perfect for getting started</p>
+          </div>
+          <div class="mb-8 pb-8 border-b border-slate-100">
+            <span class="text-5xl font-extrabold text-slate-900">₹15K</span>
+            <span class="text-slate-400 text-sm ml-2">one-time</span>
           </div>
           <ul class="space-y-4 mb-10 flex-1">
-            <li class="flex items-start gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-base mt-0.5"></i> 3-Page Responsive Website</li>
-            <li class="flex items-start gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-base mt-0.5"></i> Mobile-First Design</li>
-            <li class="flex items-start gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-base mt-0.5"></i> Contact Form Integration</li>
-            <li class="flex items-start gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-base mt-0.5"></i> Basic SEO Setup</li>
-            <li class="flex items-start gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-base mt-0.5"></i> Social Media Links</li>
-            <li class="flex items-start gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-base mt-0.5"></i> 1 Revision Round</li>
+            <li class="flex items-center gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-sm shrink-0"></i> 3-Page Responsive Website</li>
+            <li class="flex items-center gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-sm shrink-0"></i> Mobile-First Design</li>
+            <li class="flex items-center gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-sm shrink-0"></i> Contact Form Integration</li>
+            <li class="flex items-center gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-sm shrink-0"></i> Basic SEO Setup</li>
+            <li class="flex items-center gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-sm shrink-0"></i> Social Media Links</li>
+            <li class="flex items-center gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-sm shrink-0"></i> 1 Revision Round</li>
+          </ul>
+          <a href="#contact" class="w-full py-4 rounded-2xl text-sm font-bold text-center transition-all duration-300 border-2 border-slate-200 text-slate-800 hover:bg-slate-900 hover:text-white hover:border-slate-900">GET STARTED</a>
+        </div>
+
+        <!-- Growth -->
+        <div class="pricing-card bg-gradient-to-b from-white to-slate-50 p-8 md:p-10 rounded-3xl border-2 border-gold relative flex flex-col shadow-2xl shadow-gold/20 scale-105 z-10">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-slate-900 text-[10px] font-bold uppercase tracking-[0.2em] px-6 py-2 rounded-full flex items-center gap-2 shadow-lg"><i class="fa-solid fa-crown text-xs"></i> Most Popular</div>
+          <div class="mb-6">
+            <div class="w-14 h-14 bg-gradient-to-br from-gold/20 to-gold/5 rounded-2xl flex items-center justify-center mb-5">
+              <i class="fa-solid fa-chart-line text-xl gold-accent"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900">Growth</h3>
+            <p class="text-slate-500 text-sm mt-1">For growing businesses</p>
+          </div>
+          <div class="mb-8 pb-8 border-b border-slate-100">
+            <span class="text-5xl font-extrabold text-slate-900">₹35K</span>
+            <span class="text-slate-400 text-sm ml-2">one-time</span>
+          </div>
+          <ul class="space-y-4 mb-10 flex-1">
+            <li class="flex items-center gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-sm shrink-0"></i> 5-Page Custom Website</li>
+            <li class="flex items-center gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-sm shrink-0"></i> CMS Integration</li>
+            <li class="flex items-center gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-sm shrink-0"></i> Advanced SEO Package</li>
+            <li class="flex items-center gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-sm shrink-0"></i> Google Analytics Setup</li>
+            <li class="flex items-center gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-sm shrink-0"></i> Speed Optimization</li>
+            <li class="flex items-center gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-sm shrink-0"></i> 3 Revision Rounds</li>
+            <li class="flex items-center gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-sm shrink-0"></i> 30-Day Support</li>
           </ul>
           <a href="#contact" class="btn-gold w-full py-4 rounded-2xl text-sm font-bold text-center">GET STARTED</a>
         </div>
 
-        <div class="pricing-card bg-white p-8 md:p-10 rounded-3xl border-2 border-gold relative flex flex-col shadow-xl shadow-gold/10 scale-105 md:scale-110 z-10">
-          <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-slate-900 text-[10px] font-bold uppercase tracking-widest px-6 py-2 rounded-full">Most Popular</div>
-          <div class="mb-8">
-            <h3 class="text-lg font-bold text-slate-900 uppercase tracking-wider">Growth</h3>
-            <div class="mt-4 flex items-baseline gap-1">
-              <span class="text-4xl md:text-5xl font-extrabold text-slate-900">₹35K</span>
-              <span class="text-slate-400 text-sm">/project</span>
+        <!-- Premium -->
+        <div class="pricing-card bg-gradient-to-b from-white to-slate-50 p-8 md:p-10 rounded-3xl border border-slate-200 relative flex flex-col">
+          <div class="mb-6">
+            <div class="w-14 h-14 bg-gradient-to-br from-gold/20 to-gold/5 rounded-2xl flex items-center justify-center mb-5">
+              <i class="fa-solid fa-gem text-xl gold-accent"></i>
             </div>
+            <h3 class="text-lg font-bold text-slate-900">Premium</h3>
+            <p class="text-slate-500 text-sm mt-1">The full experience</p>
+          </div>
+          <div class="mb-8 pb-8 border-b border-slate-100">
+            <span class="text-5xl font-extrabold text-slate-900">₹75K</span>
+            <span class="text-slate-400 text-sm ml-2">one-time</span>
           </div>
           <ul class="space-y-4 mb-10 flex-1">
-            <li class="flex items-start gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-base mt-0.5"></i> 5-Page Custom Website</li>
-            <li class="flex items-start gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-base mt-0.5"></i> CMS Integration</li>
-            <li class="flex items-start gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-base mt-0.5"></i> Advanced SEO Package</li>
-            <li class="flex items-start gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-base mt-0.5"></i> Google Analytics Setup</li>
-            <li class="flex items-start gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-base mt-0.5"></i> Speed Optimization</li>
-            <li class="flex items-start gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-base mt-0.5"></i> 3 Revision Rounds</li>
-            <li class="flex items-start gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-base mt-0.5"></i> 30-Day Support</li>
+            <li class="flex items-center gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-sm shrink-0"></i> Unlimited Pages</li>
+            <li class="flex items-center gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-sm shrink-0"></i> Full Brand Identity</li>
+            <li class="flex items-center gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-sm shrink-0"></i> Custom Animations</li>
+            <li class="flex items-center gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-sm shrink-0"></i> E-Commerce Ready</li>
+            <li class="flex items-center gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-sm shrink-0"></i> 6-Month Priority Support</li>
+            <li class="flex items-center gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-sm shrink-0"></i> Unlimited Revisions</li>
+            <li class="flex items-center gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-sm shrink-0"></i> Hosting + Domain Included</li>
           </ul>
-          <a href="#contact" class="btn-gold w-full py-4 rounded-2xl text-sm font-bold text-center">GET STARTED</a>
-        </div>
-
-        <div class="pricing-card bg-white p-8 md:p-10 rounded-3xl border border-slate-100 relative flex flex-col">
-          <div class="mb-8">
-            <h3 class="text-lg font-bold text-slate-900 uppercase tracking-wider">Premium</h3>
-            <div class="mt-4 flex items-baseline gap-1">
-              <span class="text-4xl md:text-5xl font-extrabold text-slate-900">₹75K</span>
-              <span class="text-slate-400 text-sm">/project</span>
-            </div>
-          </div>
-          <ul class="space-y-4 mb-10 flex-1">
-            <li class="flex items-start gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-base mt-0.5"></i> Unlimited Pages</li>
-            <li class="flex items-start gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-base mt-0.5"></i> Full Brand Identity</li>
-            <li class="flex items-start gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-base mt-0.5"></i> Custom Animations</li>
-            <li class="flex items-start gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-base mt-0.5"></i> E-Commerce Ready</li>
-            <li class="flex items-start gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-base mt-0.5"></i> Priority Support (6 months)</li>
-            <li class="flex items-start gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-base mt-0.5"></i> Unlimited Revisions</li>
-            <li class="flex items-start gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-gold text-base mt-0.5"></i> Hosting Setup + Domain</li>
-          </ul>
-          <a href="#contact" class="btn-gold w-full py-4 rounded-2xl text-sm font-bold text-center">GET STARTED</a>
+          <a href="#contact" class="w-full py-4 rounded-2xl text-sm font-bold text-center transition-all duration-300 border-2 border-slate-200 text-slate-800 hover:bg-slate-900 hover:text-white hover:border-slate-900">GET STARTED</a>
         </div>
       </div>
     </div>
