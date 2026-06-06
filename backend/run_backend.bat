@@ -1,4 +1,8 @@
 @echo off
-echo Starting StratumWeb Backend...
-.\venv\Scripts\python main.py
-pause
+cd /d "%~dp0"
+if exist venv\Scripts\python.exe (
+    venv\Scripts\python main.py
+) else (
+    python main.py
+)
+if %errorlevel% neq 0 pause
