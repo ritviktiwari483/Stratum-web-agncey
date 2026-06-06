@@ -16,8 +16,10 @@ init()
 def home():
     return jsonify({"status": "ok"})
 
-@app.route("/api/contact", methods=["POST"])
+@app.route("/api/contact", methods=["GET", "POST"])
 def contact():
+    if request.method == "GET":
+        return jsonify({"message": "Use POST to submit the form, or visit /admin to view leads"})
     data = request.json
     if not data or not data.get("name") or not data.get("email"):
         return jsonify({"status": "error", "message": "Name and email required"}), 400
