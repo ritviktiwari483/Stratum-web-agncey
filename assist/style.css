@@ -407,3 +407,15 @@ footer {
 #lightbox { display: none; }
 #lightbox.open { display: flex; }
 #lightboxImg { transition: transform 0.3s ease; }
+
+/* ===== PRICING ===== */
+.pricing-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.pricing-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15);
+}
+.pricing-card.border-2:hover {
+  box-shadow: 0 20px 40px -10px rgba(212, 175, 55, 0.3);
+}

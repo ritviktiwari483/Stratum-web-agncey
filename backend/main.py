@@ -5,12 +5,12 @@ import sqlite3, os
 app = Flask(__name__)
 CORS(app)
 
-DB = os.path.join(os.path.dirname(__file__), "leads.db")
+DB = os.environ.get("DATABASE_URL", os.path.join(os.path.dirname(__file__), "leads.db"))
 
-def init():
-    with sqlite3.connect(DB) as conn:
+def init(db_path=DB):
+    with sqlite3.connect(db_path) as conn:
         conn.execute("CREATE TABLE IF NOT EXISTS leads (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, phone TEXT, email TEXT, message TEXT, date DATETIME DEFAULT CURRENT_TIMESTAMP)")
-init()
+
 
 @app.route("/")
 def home():
@@ -53,4 +53,7 @@ def admin():
     """, leads=leads, rows=rows)
 
 if __name__ == "__main__":
+    init()
     app.run(debug=True, host="0.0.0.0", port=8000)
+else:
+    init()
