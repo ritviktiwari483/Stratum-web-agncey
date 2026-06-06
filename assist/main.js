@@ -239,15 +239,23 @@ document.addEventListener('DOMContentLoaded', () => {
         return; 
       }
 
-      const API_URL = "https://api.web3forms.com/submit";
+      const API_URL = "__YOUR_BACKEND_URL__/api/contact";
 
       try {
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> SENDING...';
         btn.disabled = true;
 
+        const body = JSON.stringify({
+          name: formData.get("full_name"),
+          phone: (formData.get("country_code") || "") + (formData.get("phone_number") || ""),
+          email: formData.get("email"),
+          message: formData.get("message")
+        });
+
         const response = await fetch(API_URL, {
-          method: 'POST',
-          body: formData
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body
         });
 
         const data = await response.json();
