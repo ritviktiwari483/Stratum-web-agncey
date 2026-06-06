@@ -1,10 +1,10 @@
 from contextlib import asynccontextmanager
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
 from app.config import settings
 from app.database import init_db
 from app.routes.contacts import router as contacts_router
+from app.routes.admin import router as admin_router
 
 
 @asynccontextmanager
@@ -23,6 +23,7 @@ app.add_middleware(
 )
 
 app.include_router(contacts_router)
+app.include_router(admin_router)
 
 
 @app.get("/")
