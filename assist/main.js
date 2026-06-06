@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return; 
       }
 
-      const API_URL = "__YOUR_BACKEND_URL__/api/contact";
+      const API_URL = "http://localhost:8000/api/contact";
 
       try {
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> SENDING...';
