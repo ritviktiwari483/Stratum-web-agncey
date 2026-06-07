@@ -26,3 +26,5 @@ Message: editing videos
 [2026-06-07 16:11:03.662104] NEW LEAD: Test User (test@example.com) - India
 
 [2026-06-07 19:11:46.897420] NEW LEAD: Ritvik Tiwari (ritviktiwari032@gmail.com) - 
+
+[2026-06-07 19:24:49.821515] NEW LEAD: Simulated Mobile User (mobile@test.com) - India

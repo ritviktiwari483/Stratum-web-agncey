@@ -1,23 +1,27 @@
-from flask import Flask, request, jsonify, render_template_string
+from flask import Flask, request, jsonify, render_template_string, Response
 from flask_cors import CORS
-import sqlite3, os, smtplib
+import sqlite3, os, smtplib, csv, io
 from datetime import datetime
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import threading
+from dotenv import load_dotenv
+
+# Load Environment Variables
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 
 DB = os.environ.get("DATABASE_URL", os.path.join(os.path.dirname(__file__), "leads.db"))
-ADMIN_PASSWORD = "stratum_admin" # Change this to your preferred password
+ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "stratum_admin")
 
-# EMAIL SETTINGS (User needs to provide these)
-SMTP_SERVER = "smtp.gmail.com"
-SMTP_PORT = 587
+# EMAIL SETTINGS
+SMTP_SERVER = os.environ.get("SMTP_SERVER", "smtp.gmail.com")
+SMTP_PORT = int(os.environ.get("SMTP_PORT", 587))
 SENDER_EMAIL = os.environ.get("SENDER_EMAIL", "startumweb@gmail.com")
-SENDER_PASSWORD = os.environ.get("SENDER_PASSWORD", "") # App Password
-RECEIVER_EMAIL = "startumweb@gmail.com"
+SENDER_PASSWORD = os.environ.get("SENDER_PASSWORD", "")
+RECEIVER_EMAIL = os.environ.get("RECEIVER_EMAIL", "startumweb@gmail.com")
 
 def init(db_path=DB):
     with sqlite3.connect(db_path) as conn:
@@ -33,12 +37,15 @@ def init(db_path=DB):
                 date DATETIME DEFAULT CURRENT_TIMESTAMP
             )
         """)
-        # Ensure 'ip_address' and 'country' columns exist
+        # Migration for missing columns
+        cursor = conn.execute("PRAGMA table_info(leads)")
+        columns = [row[1] for row in cursor.fetchall()]
         for col in ["country", "ip_address"]:
-            try:
-                conn.execute(f"ALTER TABLE leads ADD COLUMN {col} TEXT")
-            except sqlite3.OperationalError:
-                pass 
+            if col not in columns:
+                try:
+                    conn.execute(f"ALTER TABLE leads ADD COLUMN {col} TEXT")
+                except sqlite3.OperationalError:
+                    pass 
 
 def send_email_notification(lead_data):
     if not SENDER_PASSWORD:
@@ -47,7 +54,7 @@ def send_email_notification(lead_data):
 
     try:
         msg = MIMEMultipart()
-        msg['From'] = SENDER_EMAIL
+        msg['From'] = f"StratumWeb | Lead Bot <{SENDER_EMAIL}>"
         msg['To'] = RECEIVER_EMAIL
         msg['Subject'] = f"🚀 New Lead: {lead_data['name']} (StratumWeb)"
 
@@ -64,7 +71,7 @@ def send_email_notification(lead_data):
                         <tr><td style="padding: 8px; border-bottom: 1px solid #eee;"><strong>Name:</strong></td><td style="padding: 8px; border-bottom: 1px solid #eee;">{lead_data['name']}</td></tr>
                         <tr><td style="padding: 8px; border-bottom: 1px solid #eee;"><strong>Email:</strong></td><td style="padding: 8px; border-bottom: 1px solid #eee;">{lead_data['email']}</td></tr>
                         <tr><td style="padding: 8px; border-bottom: 1px solid #eee;"><strong>Phone:</strong></td><td style="padding: 8px; border-bottom: 1px solid #eee;">{lead_data['phone']}</td></tr>
-                        <tr><td style="padding: 8px; border-bottom: 1px solid #eee;"><strong>Country:</strong></td><td style="padding: 8px; border-bottom: 1px solid #eee;">{lead_data['country']}</td></tr>
+                        <tr><td style="padding: 8px; border-bottom: 1px solid #eee;"><strong>Country:</strong></td><td style="padding: 8px; border-bottom: 1px solid #eee;">{lead_data['country'] or 'N/A'}</td></tr>
                         <tr><td style="padding: 8px; border-bottom: 1px solid #eee;"><strong>IP:</strong></td><td style="padding: 8px; border-bottom: 1px solid #eee;">{lead_data['ip_address']}</td></tr>
                     </table>
                     <div style="margin-top: 20px; padding: 15px; background: #f9f9f9; border-left: 4px solid #d4af37;">
@@ -95,6 +102,44 @@ def home():
         "service": "StratumWeb Backend",
         "timestamp": datetime.now().isoformat()
     })
+
+@app.route("/admin/delete/<int:id>", methods=["POST"])
+def delete_lead(id):
+    pwd = request.args.get("pass")
+    if pwd != ADMIN_PASSWORD:
+        return jsonify({"status": "error", "message": "Unauthorized"}), 403
+    
+    try:
+        with sqlite3.connect(DB) as conn:
+            conn.execute("DELETE FROM leads WHERE id = ?", (id,))
+        return jsonify({"status": "success", "message": "Lead deleted"})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+@app.route("/admin/export")
+def export_leads():
+    pwd = request.args.get("pass")
+    if pwd != ADMIN_PASSWORD:
+        return "Unauthorized", 403
+    
+    try:
+        with sqlite3.connect(DB) as conn:
+            conn.row_factory = sqlite3.Row
+            leads = conn.execute("SELECT * FROM leads ORDER BY date DESC").fetchall()
+        
+        output = io.StringIO()
+        writer = csv.writer(output)
+        writer.writerow(["ID", "Name", "Email", "Phone", "Country", "Message", "IP", "Date"])
+        for lead in leads:
+            writer.writerow([lead['id'], lead['name'], lead['email'], lead['phone'], lead['country'], lead['message'], lead['ip_address'], lead['date']])
+        
+        return Response(
+            output.getvalue(),
+            mimetype="text/csv",
+            headers={"Content-disposition": f"attachment; filename=stratumweb_leads_{datetime.now().strftime('%Y%m%d')}.csv"}
+        )
+    except Exception as e:
+        return str(e), 500
 
 @app.route("/admin")
 def admin():
@@ -137,14 +182,13 @@ def admin():
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>StratumWeb | Premium Admin Dashboard</title>
+            <title>StratumWeb | Lead Intelligence</title>
             <script src="https://cdn.tailwindcss.com"></script>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
             <style>
                 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
                 body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0c0f18; color: #e2e8f0; }
                 .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
-                .gold-gradient { background: linear-gradient(135deg, #d4af37 0%, #facc15 100%); }
                 .lead-row:hover { background: rgba(255, 255, 255, 0.03); }
             </style>
         </head>
@@ -153,14 +197,17 @@ def admin():
                 <header class="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
                     <div>
                         <h1 class="text-3xl font-extrabold tracking-tight">Lead <span class="text-yellow-500">Intelligence</span></h1>
-                        <p class="text-slate-400 mt-1">Real-time engagement tracking for StratumWeb Agency</p>
+                        <p class="text-slate-400 mt-1">Real-time engagement tracking dashboard</p>
                     </div>
-                    <div class="flex gap-4">
+                    <div class="flex gap-3">
+                        <a href="/admin/export?pass={{ pwd }}" class="glass flex items-center gap-2 px-5 py-3 rounded-2xl hover:bg-slate-700 transition">
+                            <i class="fa-solid fa-file-export text-xs"></i> EXPORT CSV
+                        </a>
                         <div class="glass px-6 py-3 rounded-2xl text-center">
-                            <p class="text-xs text-slate-500 uppercase tracking-widest font-bold">Total Leads</p>
+                            <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Total Leads</p>
                             <p class="text-2xl font-bold text-yellow-500">{{ count }}</p>
                         </div>
-                        <button onclick="window.location.reload()" class="glass h-full px-6 rounded-2xl hover:bg-slate-700 transition-all">
+                        <button onclick="window.location.reload()" class="glass h-full px-5 rounded-2xl hover:bg-slate-700 transition">
                             <i class="fa-solid fa-rotate"></i>
                         </button>
                     </div>
@@ -170,45 +217,51 @@ def admin():
                     <div class="overflow-x-auto">
                         <table class="w-full text-left">
                             <thead>
-                                <tr class="bg-slate-800/50 text-slate-400 text-xs uppercase tracking-widest font-bold">
+                                <tr class="bg-slate-800/50 text-slate-400 text-[10px] uppercase tracking-[0.2em] font-bold">
                                     <th class="px-8 py-6">Timestamp</th>
                                     <th class="px-8 py-6">Client Identity</th>
                                     <th class="px-8 py-6">Contact Info</th>
                                     <th class="px-8 py-6">Origin</th>
                                     <th class="px-8 py-6">Project Brief</th>
+                                    <th class="px-8 py-6 text-right">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-slate-800">
                                 {% for lead in leads %}
-                                <tr class="lead-row transition-colors">
+                                <tr class="lead-row transition-colors" id="row-{{ lead['id'] }}">
                                     <td class="px-8 py-8 whitespace-nowrap">
                                         <div class="text-sm font-medium">{{ lead['date'].split(' ')[0] }}</div>
                                         <div class="text-[10px] text-slate-500 mt-1">{{ lead['date'].split(' ')[1] }}</div>
                                     </td>
                                     <td class="px-8 py-8">
                                         <div class="text-base font-bold text-white">{{ lead['name'] }}</div>
-                                        <div class="text-xs text-yellow-500/80 mt-1">Potential Client</div>
+                                        <div class="text-[10px] text-yellow-500/80 mt-1 uppercase font-bold tracking-wider">Potential Growth</div>
                                     </td>
                                     <td class="px-8 py-8">
-                                        <div class="flex flex-col gap-2">
-                                            <div class="flex items-center gap-2 text-sm">
+                                        <div class="flex flex-col gap-1.5">
+                                            <a href="mailto:{{ lead['email'] }}" class="flex items-center gap-2 text-sm hover:text-yellow-500 transition">
                                                 <i class="fa-solid fa-envelope text-[10px] text-slate-500"></i>
                                                 {{ lead['email'] }}
-                                            </div>
-                                            <div class="flex items-center gap-2 text-sm">
+                                            </a>
+                                            <a href="tel:{{ lead['phone'] }}" class="flex items-center gap-2 text-sm hover:text-yellow-500 transition">
                                                 <i class="fa-solid fa-phone text-[10px] text-slate-500"></i>
                                                 {{ lead['phone'] }}
-                                            </div>
+                                            </a>
                                         </div>
                                     </td>
                                     <td class="px-8 py-8">
-                                        <span class="px-3 py-1 bg-yellow-500/10 text-yellow-500 rounded-full text-xs font-bold">{{ lead['country'] }}</span>
-                                        <div class="text-[10px] text-slate-600 mt-2 font-mono uppercase">{{ lead['ip_address'] }}</div>
+                                        <span class="px-3 py-1 bg-yellow-500/10 text-yellow-500 rounded-full text-[10px] font-bold">{{ lead['country'] or 'Unknown' }}</span>
+                                        <div class="text-[9px] text-slate-600 mt-2 font-mono">{{ lead['ip_address'] }}</div>
                                     </td>
                                     <td class="px-8 py-8">
-                                        <p class="text-sm text-slate-300 max-w-xs line-clamp-2 hover:line-clamp-none cursor-help transition-all">
+                                        <p class="text-xs text-slate-300 max-w-xs leading-relaxed line-clamp-2 hover:line-clamp-none cursor-help transition-all">
                                             {{ lead['message'] }}
                                         </p>
+                                    </td>
+                                    <td class="px-8 py-8 text-right">
+                                        <button onclick="deleteLead({{ lead['id'] }})" class="text-slate-600 hover:text-red-500 transition">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </button>
                                     </td>
                                 </tr>
                                 {% endfor %}
@@ -217,16 +270,30 @@ def admin():
                     </div>
                 </div>
 
-                <footer class="mt-12 text-center text-slate-600 text-xs uppercase tracking-[0.2em]">
-                    &copy; 2026 STRATUMWEB INTERNAL INFRASTRUCTURE &bull; SECURITY LEVEL: ALPHA
+                <script>
+                    async function deleteLead(id) {
+                        if (!confirm('Are you sure you want to delete this lead?')) return;
+                        try {
+                            const res = await fetch(`/admin/delete/${id}?pass={{ pwd }}`, { method: 'POST' });
+                            if (res.ok) {
+                                document.getElementById(`row-${id}`).remove();
+                            } else {
+                                alert('Error deleting lead');
+                            }
+                        } catch (e) { console.error(e); }
+                    }
+                </script>
+
+                <footer class="mt-12 text-center text-slate-600 text-[10px] uppercase tracking-[0.3em]">
+                    &copy; 2026 STRATUMWEB INTERNAL INFRASTRUCTURE &bull; SECURED ACCESS
                 </footer>
             </div>
         </body>
         </html>
         """
-        return render_template_string(html, leads=leads, count=len(leads))
+        return render_template_string(html, leads=leads, count=len(leads), pwd=pwd)
     except Exception as e:
-        return f"Error: {str(e)}", 500
+        return f"Dashboard Error: {str(e)}", 500
 
 @app.route("/api/contact", methods=["POST"])
 def contact():

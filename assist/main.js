@@ -240,7 +240,15 @@ document.addEventListener('DOMContentLoaded', () => {
         return; 
       }
 
-      const API_URL = "http://localhost:8000/api/contact";
+      // 2. DYNAMIC API URL DETECTION
+      // Logic: If on localhost/127.0.0.1, use localhost:8000
+      // If on a network IP (e.g. 192.168.x.x), use that IP:8000
+      // Otherwise fallback to the current origin
+      let API_URL = "http://localhost:8000/api/contact";
+      const host = window.location.hostname;
+      if (host !== "localhost" && host !== "127.0.0.1") {
+        API_URL = `http://${host}:8000/api/contact`;
+      }
 
       try {
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> SENDING...';
@@ -248,8 +256,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const body = JSON.stringify({
           name: formData.get("full_name"),
-          phone: (formData.get("country_code") || "") + (formData.get("phone_number") || ""),
+          phone: (formData.get("country_code") || "") + " " + (formData.get("phone_number") || ""),
           email: formData.get("email"),
+          country: formData.get("user_country"),
           message: formData.get("message")
         });
 
