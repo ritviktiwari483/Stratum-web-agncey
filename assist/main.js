@@ -12,7 +12,7 @@ if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
   ensureSectionsVisible();
 } else {
   try {
-    gsap.registerPlugin(ScrollTrigger, TextPlugin);
+    gsap.registerPlugin(ScrollTrigger);
 
     // ==========================================
     // SCROLL PROGRESS BAR
@@ -26,52 +26,39 @@ if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
     });
 
     // ==========================================
-    // HERO ANIMATIONS (Subtle)
+    // HERO ANIMATIONS
     // ==========================================
     const hero = document.querySelector('#home');
     if (hero) {
-      const tl = gsap.timeline({ defaults: { ease: 'power2.out', duration: 0.6 } });
-      tl.from('.anim-hero', { y: 20, opacity: 0, stagger: 0.1 })
-        .from('.anim-hero-2', { opacity: 0, y: 10 }, '-=0.3')
-        .from('.anim-hero-3', { opacity: 0, y: 10 }, '-=0.3')
-        .from('.anim-hero-4', { opacity: 0 }, '-=0.2');
+      const tl = gsap.timeline({ defaults: { ease: 'power1.out', duration: 0.4 } });
+      tl.from('.anim-hero', { y: 10, opacity: 0, stagger: 0.05 })
+        .from('.anim-hero-2', { opacity: 0 }, '-=0.2')
+        .from('.anim-hero-3', { opacity: 0 }, '-=0.2');
     }
 
     // ==========================================
-    // SCROLL REVEAL (Reliable .from() logic)
+    // SCROLL REVEAL
     // ==========================================
     gsap.utils.toArray('.gsap-reveal').forEach((section) => {
       gsap.from(section, {
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 85%',
-          toggleActions: 'play none none none',
-        },
-        y: 30,
+        scrollTrigger: { trigger: section, start: 'top 90%', toggleActions: 'play none none none' },
         opacity: 0,
-        duration: 0.8,
-        ease: 'power2.out',
+        duration: 0.4,
+        ease: 'power1.out',
         clearProps: 'all'
       });
     });
 
-    // Individual Card Animators
-    const animateSubItems = (selector, trigger) => {
-      gsap.from(selector, {
-        scrollTrigger: { trigger: trigger, start: 'top 80%' },
-        y: 20,
+    gsap.utils.toArray('.service-card, .process-step, .portfolio-card, .pricing-card').forEach((el) => {
+      gsap.from(el, {
+        scrollTrigger: { trigger: el, start: 'top 88%' },
         opacity: 0,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: 'power2.out',
+        duration: 0.3,
+        stagger: 0.03,
+        ease: 'power1.out',
         clearProps: 'all'
       });
-    };
-
-    animateSubItems('.service-card', '#services');
-    animateSubItems('.process-step', '#process');
-    animateSubItems('.portfolio-card', '#work');
-    animateSubItems('.pricing-card', '#pricing');
+    });
 
     // ==========================================
     // STATS COUNTER
@@ -89,8 +76,8 @@ if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
           const obj = { val: 0 };
           gsap.to(obj, {
             val: target,
-            duration: 1.5,
-            ease: 'power2.out',
+            duration: 1,
+            ease: 'power1.out',
             onUpdate: () => { counter.textContent = Math.floor(obj.val); },
             onComplete: () => { counter.textContent = target; },
           });
@@ -312,3 +299,43 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
+// ==========================================
+// STATS COUNTER ANIMATION
+// ==========================================
+function initCounters() {
+    const statsSection = document.querySelector('#stats');
+    if (!statsSection) return;
+
+    const counters = document.querySelectorAll('.counter');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                counters.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    let current = 0;
+                    const duration = 2000; // 2 seconds
+                    const stepTime = 20;
+                    const increment = target / (duration / stepTime);
+                    
+                    const countIt = () => {
+                        current += increment;
+                        if (current < target) {
+                            counter.innerText = Math.ceil(current);
+                            setTimeout(countIt, stepTime);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    countIt();
+                });
+                observer.unobserve(statsSection);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    observer.observe(statsSection);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initCounters();
+});
