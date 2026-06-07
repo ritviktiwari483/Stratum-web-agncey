@@ -30,32 +30,79 @@ if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
     // ==========================================
     const hero = document.querySelector('#home');
     if (hero) {
-      const tl = gsap.timeline({ defaults: { ease: 'power1.out', duration: 0.4 } });
-      tl.from('.anim-hero', { y: 10, opacity: 0, stagger: 0.05 })
-        .from('.anim-hero-2', { opacity: 0 }, '-=0.2')
-        .from('.anim-hero-3', { opacity: 0 }, '-=0.2');
+      // Main Entrance Timeline
+      const tl = gsap.timeline({ defaults: { ease: 'expo.out', duration: 1.6 } });
+      
+      tl.from('.anim-hero', { 
+          yPercent: 120, 
+          x: () => (Math.random() - 0.5) * 10, // Subtle jitter
+          rotationX: -15,
+          opacity: 0,
+          stagger: 0.18,
+          duration: 1.8,
+          ease: "back.out(1.2)", // Slight overshoot for mechanical feel
+          transformOrigin: "bottom center"
+        })
+        .from('.anim-hero-2', { 
+          y: 20, 
+          opacity: 0, 
+          duration: 1 
+        }, '-=1.2')
+        .from('.anim-hero-3', { 
+          y: 20, 
+          opacity: 0, 
+          duration: 1,
+          stagger: 0.15
+        }, '-=1')
+        .from('.anim-hero-4', {
+          opacity: 0,
+          y: 10,
+          duration: 1
+        }, '-=0.8');
+
+      // Subtle Parallax Effect
+      gsap.to('.hero-title', {
+        scrollTrigger: {
+          trigger: '#home',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true
+        },
+        y: 100,
+        opacity: 0.5,
+        ease: 'none'
+      });
     }
 
     // ==========================================
-    // SCROLL REVEAL
+    // SCROLL REVEAL (LUXURY)
     // ==========================================
     gsap.utils.toArray('.gsap-reveal').forEach((section) => {
       gsap.from(section, {
-        scrollTrigger: { trigger: section, start: 'top 90%', toggleActions: 'play none none none' },
+        scrollTrigger: { 
+          trigger: section, 
+          start: 'top 92%', 
+          toggleActions: 'play none none none' 
+        },
         opacity: 0,
-        duration: 0.4,
-        ease: 'power1.out',
+        y: 30,
+        duration: 1.2,
+        ease: 'expo.out',
         clearProps: 'all'
       });
     });
 
     gsap.utils.toArray('.service-card, .process-step, .portfolio-card, .pricing-card').forEach((el) => {
       gsap.from(el, {
-        scrollTrigger: { trigger: el, start: 'top 88%' },
+        scrollTrigger: { 
+          trigger: el, 
+          start: 'top 95%' 
+        },
         opacity: 0,
-        duration: 0.3,
-        stagger: 0.03,
-        ease: 'power1.out',
+        y: 40,
+        duration: 1,
+        stagger: 0.1,
+        ease: 'power3.out',
         clearProps: 'all'
       });
     });
@@ -227,25 +274,20 @@ document.addEventListener('DOMContentLoaded', () => {
         return; 
       }
 
-      // 2. SEND TO FLASK BACKEND
-      const API_URL = "http://localhost:8000/api/contact";
+      // 2. SEND TO WEB3FORMS (always-on, no server needed)
+      const API_URL = "https://api.web3forms.com/submit";
 
       try {
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> SENDING...';
         btn.disabled = true;
 
-        const body = JSON.stringify({
-          name: formData.get("full_name"),
-          phone: (formData.get("country_code") || "") + " " + (formData.get("phone_number") || ""),
-          email: formData.get("email"),
-          country: formData.get("user_country"),
-          message: formData.get("message")
-        });
+        formData.append("access_key", "ed782a2e-de8e-4c42-b1ec-2924bad21391");
+        formData.append("subject", "New Lead - StratumWeb");
+        formData.append("from_name", formData.get("full_name"));
 
         const response = await fetch(API_URL, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body
+          body: formData
         });
 
         const data = await response.json();
