@@ -240,9 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return; 
       }
 
-      // Dynamically detect the API URL to support testing on mobile devices
-      const API_HOST = (window.location.hostname && window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") ? window.location.hostname : "localhost";
-      const API_URL = `http://${API_HOST}:8000/api/contact`;
+      const API_URL = "http://localhost:8000/api/contact";
 
       try {
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> SENDING...';
@@ -252,7 +250,6 @@ document.addEventListener('DOMContentLoaded', () => {
           name: formData.get("full_name"),
           phone: (formData.get("country_code") || "") + (formData.get("phone_number") || ""),
           email: formData.get("email"),
-          country: formData.get("user_country"),
           message: formData.get("message")
         });
 
