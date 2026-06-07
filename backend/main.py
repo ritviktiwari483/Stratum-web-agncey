@@ -199,8 +199,12 @@ def admin():
                         <h1 class="text-3xl font-extrabold tracking-tight">Lead <span class="text-yellow-500">Intelligence</span></h1>
                         <p class="text-slate-400 mt-1">Real-time engagement tracking dashboard</p>
                     </div>
-                    <div class="flex gap-3">
-                        <a href="/admin/export?pass={{ pwd }}" class="glass flex items-center gap-2 px-5 py-3 rounded-2xl hover:bg-slate-700 transition">
+                    <div class="flex flex-wrap gap-3 justify-center">
+                        <div class="relative">
+                            <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-xs text-xs"></i>
+                            <input type="text" id="leadSearch" placeholder="Search leads..." class="glass pl-10 pr-4 py-3 rounded-2xl outline-none focus:border-yellow-500 transition w-64 text-sm">
+                        </div>
+                        <a href="/admin/export?pass={{ pwd }}" class="glass flex items-center gap-2 px-5 py-3 rounded-2xl hover:bg-slate-700 transition text-sm">
                             <i class="fa-solid fa-file-export text-xs"></i> EXPORT CSV
                         </a>
                         <div class="glass px-6 py-3 rounded-2xl text-center">

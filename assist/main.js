@@ -241,12 +241,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // 2. DYNAMIC API URL DETECTION
-      // Logic: If on localhost/127.0.0.1, use localhost:8000
-      // If on a network IP (e.g. 192.168.x.x), use that IP:8000
-      // Otherwise fallback to the current origin
+      // Logic: If on localhost, use localhost:8000
+      // If on a network IP (mobile phone access), use that IP:8000
       let API_URL = "http://localhost:8000/api/contact";
       const host = window.location.hostname;
-      if (host !== "localhost" && host !== "127.0.0.1") {
+      if (host && host !== "localhost" && host !== "127.0.0.1") {
         API_URL = `http://${host}:8000/api/contact`;
       }
 
