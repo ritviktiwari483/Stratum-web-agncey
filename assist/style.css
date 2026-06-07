@@ -338,7 +338,13 @@ footer {
   position: absolute;
   inset: 0;
   background: url('hero-bg.jpg') center/cover no-repeat;
+  animation: heroZoom 20s ease-in-out infinite alternate;
   z-index: 0;
+}
+
+@keyframes heroZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.06); }
 }
 .hero-bg::after {
   content: '';
