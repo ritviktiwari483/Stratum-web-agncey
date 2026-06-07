@@ -240,14 +240,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return; 
       }
 
-      // 2. DYNAMIC API URL DETECTION
-      // Logic: If on localhost, use localhost:8000
-      // If on a network IP (mobile phone access), use that IP:8000
-      let API_URL = "http://localhost:8000/api/contact";
-      const host = window.location.hostname;
-      if (host && host !== "localhost" && host !== "127.0.0.1") {
-        API_URL = `http://${host}:8000/api/contact`;
-      }
+      // 2. SEND TO FLASK BACKEND
+      const API_URL = "http://localhost:8000/api/contact";
 
       try {
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> SENDING...';

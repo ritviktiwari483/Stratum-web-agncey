@@ -275,6 +275,16 @@ def admin():
                 </div>
 
                 <script>
+                    // Real-time Search Filter
+                    document.getElementById('leadSearch').addEventListener('input', function(e) {
+                        const term = e.target.value.toLowerCase();
+                        const rows = document.querySelectorAll('.lead-row');
+                        rows.forEach(row => {
+                            const text = row.innerText.toLowerCase();
+                            row.style.display = text.includes(term) ? '' : 'none';
+                        });
+                    });
+
                     async function deleteLead(id) {
                         if (!confirm('Are you sure you want to delete this lead?')) return;
                         try {
