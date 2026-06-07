@@ -246,21 +246,39 @@ if (backToTop) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }// ==========================================
-// CONTACT FORM HANDLER (GOOGLE SHEETS)
+// CONFIGURATION
+// ==========================================
+const STRATUM_CONFIG = {
+  USE_DIRECT_FORM: true,
+  FORM_ACTION: "https://formsubmit.io/send/startumweb@gmail.com",
+  LOCAL_PORT: 8000
+};
+
+// ==========================================
+// CONTACT FORM HANDLER
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
   const contactForm = document.querySelector('#contact form');
-  let lastSubmitTime = 0; // For Rate Limiting
+  let lastSubmitTime = 0;
 
   if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
+      // DIRECT FORM SUBMISSION (no server needed)
+      if (STRATUM_CONFIG.USE_DIRECT_FORM) {
+        const redirect = document.createElement('input');
+        redirect.type = 'hidden';
+        redirect.name = '_next';
+        redirect.value = window.location.href;
+        contactForm.appendChild(redirect);
+        contactForm.action = STRATUM_CONFIG.FORM_ACTION;
+        contactForm.method = "POST";
+        return;
+      }
+      
       e.preventDefault();
       
       const currentTime = Date.now();
-      // Prevent clicking submit more than once every 10 seconds
-      if (currentTime - lastSubmitTime < 10000) {
-        return; 
-      }
+      if (currentTime - lastSubmitTime < 10000) return; 
       
       const btn = contactForm.querySelector('button');
       const originalText = btn.innerHTML;
@@ -268,46 +286,81 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // 1. HONEYPOT CHECK
       if (formData.get('_honeypot')) {
-        console.warn("Spam detected!");
         btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> SENT SUCCESSFULLY';
         contactForm.reset();
         return; 
       }
 
-      // 2. SEND TO WEB3FORMS (always-on, no server needed)
-      const API_URL = "https://api.web3forms.com/submit";
+      // 2. HANDLE SUBMISSION
+      if (STRATUM_CONFIG.USE_DIRECT_FORM) {
+        contactForm.removeEventListener('submit', this);
+        contactForm.action = STRATUM_CONFIG.FORM_ACTION;
+        contactForm.method = "POST";
+        contactForm.submit();
+        return;
+      }
+
+      // 2. RESOLVE API URL
+      let API_URL = "";
+      const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      
+      if (STRATUM_CONFIG.PRODUCTION_API_URL) {
+        API_URL = `${STRATUM_CONFIG.PRODUCTION_API_URL}/api/contact`;
+      } else if (isLocal) {
+        API_URL = `http://localhost:${STRATUM_CONFIG.LOCAL_PORT}/api/contact`;
+      } else {
+        // Fallback: If no production URL is set, try to use current hostname (GitHub)
+        // Note: This will likely fail due to lack of an API on GitHub server
+        API_URL = `${window.location.protocol}//${window.location.hostname}:${STRATUM_CONFIG.LOCAL_PORT}/api/contact`;
+      }
 
       try {
+        console.log(`[StratumWeb] Submission attempt to: ${API_URL}`);
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> SENDING...';
         btn.disabled = true;
 
-        formData.append("access_key", "ed782a2e-de8e-4c42-b1ec-2924bad21391");
-        formData.append("subject", "New Lead - StratumWeb");
-        formData.append("from_name", formData.get("full_name"));
+        const body = JSON.stringify({
+          name: formData.get("full_name"),
+          phone: (formData.get("country_code") || "") + " " + (formData.get("phone_number") || ""),
+          email: formData.get("email"),
+          country: formData.get("user_country"),
+          message: formData.get("message")
+        });
 
         const response = await fetch(API_URL, {
           method: "POST",
-          body: formData
+          headers: { "Content-Type": "application/json" },
+          body
         });
 
-        const data = await response.json();
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({}));
+          throw new Error(errorData.message || `Server Error (${response.status})`);
+        }
 
-        if (!response.ok) throw new Error(data.message || "Submission failed");
-
+        console.log("[StratumWeb] Lead captured successfully!");
         lastSubmitTime = currentTime;
         btn.innerHTML = '<i class="fa-solid fa-circle-check scale-125"></i> SENT SUCCESSFULLY';
         btn.style.background = '#10b981';
         contactForm.reset();
 
       } catch (error) {
+        console.error("[StratumWeb] Form Error:", error);
         btn.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> ERROR - TRY AGAIN';
         btn.style.background = '#ef4444';
+        
+        // Helpful tip for the owner
+        if (!isLocal && !STRATUM_CONFIG.PRODUCTION_API_URL) {
+          alert("BACKEND NOT FOUND: You are on the live site but no Production API URL is set in main.js. Please host your backend or use Ngrok.");
+        }
       } finally {
         setTimeout(() => {
           btn.innerHTML = originalText;
           btn.style.background = '';
           btn.disabled = false;
-        }, 3000);
+        }, 4000);
+      }
+    });
   }
 });
 
