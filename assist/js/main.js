@@ -108,31 +108,6 @@ if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
     });
 
     // ==========================================
-    // STATS COUNTER
-    // ==========================================
-    let countersAnimated = false;
-    ScrollTrigger.create({
-      trigger: '#stats',
-      start: 'top 80%',
-      once: true,
-      onEnter: () => {
-        if (countersAnimated) return;
-        countersAnimated = true;
-        gsap.utils.toArray('.counter').forEach((counter) => {
-          const target = parseInt(counter.dataset.target, 10);
-          const obj = { val: 0 };
-          gsap.to(obj, {
-            val: target,
-            duration: 1,
-            ease: 'power1.out',
-            onUpdate: () => { counter.textContent = Math.floor(obj.val); },
-            onComplete: () => { counter.textContent = target; },
-          });
-        });
-      },
-    });
-
-    // ==========================================
     // REFRESH SCROLLTRIGGER ON LOAD
     // ==========================================
     window.addEventListener('load', () => { 
@@ -306,16 +281,18 @@ function initCounters() {
     if (!statsSection) return;
 
     const counters = document.querySelectorAll('.counter');
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 counters.forEach(counter => {
                     const target = parseInt(counter.getAttribute('data-target'));
                     let current = 0;
-                    const duration = 2000; // 2 seconds
+                    counter.innerText = '0';
+                    const duration = 2000;
                     const stepTime = 20;
                     const increment = target / (duration / stepTime);
-                    
+
                     const countIt = () => {
                         current += increment;
                         if (current < target) {
@@ -330,7 +307,7 @@ function initCounters() {
                 observer.unobserve(statsSection);
             }
         });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
     observer.observe(statsSection);
 }
