@@ -351,21 +351,46 @@ footer {
   content: '';
   position: absolute;
   inset: 0;
-  background: url('hero-bg.jpg') center/cover no-repeat;
-  animation: heroZoom 20s ease-in-out infinite alternate;
+  background: url('hero-image.jpg') center/cover no-repeat;
+  animation: heroZoom 25s ease-in-out infinite alternate, heroDrift 12s ease-in-out infinite alternate;
   z-index: 0;
 }
 
 @keyframes heroZoom {
   0% { transform: scale(1); }
-  100% { transform: scale(1.06); }
+  100% { transform: scale(1.08); }
+}
+
+@keyframes heroDrift {
+  0% { background-position: center center; }
+  50% { background-position: 52% 48%; }
+  100% { background-position: 48% 52%; }
 }
 .hero-bg::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle, transparent 20%, rgba(15, 23, 42, 0.4) 100%), linear-gradient(rgba(15, 23, 42, 0.3), rgba(15, 23, 42, 0.5));
+  background: 
+    linear-gradient(135deg, rgba(166, 134, 38, 0.15) 0%, transparent 40%),
+    linear-gradient(225deg, rgba(15, 23, 42, 0.3) 0%, rgba(15, 23, 42, 0.6) 100%);
   z-index: 1;
+}
+
+/* Light sweep overlay on hero */
+.hero-bg .hero-sweep {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.03) 50%, transparent 70%);
+  background-size: 200% 100%;
+  animation: lightSweep 8s ease-in-out infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+
+@keyframes lightSweep {
+  0% { background-position: 200% 0; }
+  50% { background-position: -50% 0; }
+  100% { background-position: 200% 0; }
 }
 
 .gold-accent-shimmer {
