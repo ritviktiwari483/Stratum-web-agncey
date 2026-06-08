@@ -16,3 +16,6 @@ django_project/media/
 # OS
 Thumbs.db
 .DS_Store
+
+backend/
+backend/*
