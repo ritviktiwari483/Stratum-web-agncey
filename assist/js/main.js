@@ -331,8 +331,5 @@ document.addEventListener('DOMContentLoaded', () => {
             const label = type === 'logo' ? 'Logo Gallery' : 'Design Showcase';
             img.parentElement.innerHTML = '<div class="text-center p-8"><i class="fa-solid ' + icon + ' text-6xl text-slate-400 mb-4"></i><p class="text-slate-500 text-sm font-medium">' + label + '</p><p class="text-slate-400 text-xs mt-2">Add your ' + type + ' samples here</p></div>';
         });
-        if (img.complete && img.naturalWidth === 0) {
-            img.dispatchEvent(new Event('error'));
-        }
     });
 });
