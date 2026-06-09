@@ -261,6 +261,14 @@ document.querySelectorAll('.portfolio-card img').forEach((img) => {
   });
 });
 
+document.querySelectorAll('.showcase-img').forEach((img) => {
+  img.addEventListener('click', () => {
+    lightboxImg.src = img.src;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
 function closeLightbox() {
   lightbox.classList.remove('open');
   document.body.style.overflow = '';
