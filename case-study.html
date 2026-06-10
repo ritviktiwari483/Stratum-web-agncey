@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="Case Study - StratumWeb Agency project results and details">
+  <meta name="robots" content="index, follow">
+  <title>Case Study - StratumWeb Agency</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="assist/css/style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="assist/images/logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assist/images/logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assist/images/logo.png">
+  <link rel="shortcut icon" href="assist/images/logo.png">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body class="bg-white text-gray-900">
+
+  <!-- Navbar -->
+  <nav id="navbar" class="nav-glass sticky top-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 py-4 md:py-6 flex justify-between items-center">
+      <div class="flex items-center shrink-0">
+        <a href="index.html" class="flex items-center shrink-0 mr-2 md:mr-3"><img src="assist/images/logo.png" alt="StratumWeb" class="w-[38px] md:w-[48px] h-[38px] md:h-[48px] rounded-full object-cover border-2 border-gold/30"></a>
+        <a href="index.html" class="flex items-center gap-0.5 md:gap-1 no-underline whitespace-nowrap">
+          <span class="text-base md:text-xl lg:text-2xl font-extrabold tracking-tighter text-slate-900">Stratum</span>
+          <span class="text-base md:text-xl lg:text-2xl font-medium gold-accent-mini">Web</span>
+          <span class="ml-1 text-[9px] md:text-[10px] lg:text-xs font-bold uppercase tracking-widest text-slate-400 hidden sm:inline">Agency</span>
+        </a>
+      </div>
+      <div class="hidden md:flex items-center space-x-4 lg:space-x-8 text-xs lg:text-sm font-medium whitespace-nowrap">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#work" class="nav-link">Portfolio</a>
+        <a href="index.html#creative" class="nav-link">Creative</a>
+        <a href="index.html#contact" class="nav-link">Contact</a>
+      </div>
+      <div class="flex items-center gap-3 md:gap-4 shrink-0">
+        <a href="index.html#contact" class="hidden md:inline-flex px-4 lg:px-6 py-2.5 md:py-3 btn-gold rounded-full text-[10px] md:text-xs lg:text-sm whitespace-nowrap">
+          START PROJECT
+        </a>
+        <button id="menuToggle" class="md:hidden text-xl md:text-2xl text-slate-900 p-1.5" aria-label="Toggle menu" onclick="document.getElementById('mobileMenu').classList.toggle('max-h-0'); document.getElementById('mobileMenu').classList.toggle('max-h-[500px]')">
+          <i id="menuIcon" class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="md:hidden fixed left-0 right-0 max-h-0 bg-white/95 backdrop-blur-xl shadow-2xl overflow-hidden transition-all duration-500 ease-in-out border-b border-slate-100" style="z-index: 999;">
+      <div class="px-8 py-10 flex flex-col items-center space-y-6 text-center">
+        <a href="index.html" class="block text-2xl font-bold text-slate-900 hover:text-gold transition-colors">Home</a>
+        <a href="index.html#work" class="block text-2xl font-bold text-slate-900 hover:text-gold transition-colors">Portfolio</a>
+        <a href="index.html#creative" class="block text-2xl font-bold text-slate-900 hover:text-gold transition-colors">Creative</a>
+        <a href="index.html#contact" class="block text-2xl font-bold text-slate-900 hover:text-gold transition-colors">Contact</a>
+        <a href="index.html#contact" class="w-full mt-4 px-8 py-4 btn-gold rounded-full text-lg shadow-lg">START PROJECT</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Case Study Content -->
+  <section id="case-study" class="py-20 md:py-32 bg-white">
+    <div class="max-w-4xl mx-auto px-4 md:px-8" id="caseContent">
+      <!-- Dynamic content loads here -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-20 text-white">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 text-center">
+      <img src="assist/images/logo.png" alt="StratumWeb Agency" class="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-2 border-gold/30 mx-auto mb-6">
+      <div class="text-2xl md:text-3xl font-bold tracking-tight mb-6">
+        Stratum<span class="gold-accent">Web</span> <span class="text-xs font-light tracking-widest text-slate-500">AGENCY</span>
+      </div>
+      <p class="text-slate-400 text-sm max-w-md mx-auto mb-10 leading-relaxed">
+        Strategic digital solutions for businesses ready to make an impact. Clean design, powerful execution.
+      </p>
+      <div class="border-t border-slate-800 pt-10 text-xs text-slate-500 uppercase tracking-widest font-medium flex flex-col md:flex-row justify-between items-center gap-4">
+        <span>&copy; 2026 StratumWeb Agency &bull; Ritvik Tiwari & Ayush Singh</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const projects = {
+      medconnect: {
+        title: "MedConnect Pro",
+        tag: "Healthcare",
+        image: "assist/images/gallery-4.jpg",
+        duration: "6 Weeks",
+        role: "Full-Stack Development, UI/UX Design",
+        tech: "React, Node.js, MongoDB, AWS",
+        overview: "A real-time patient monitoring dashboard designed for hospitals with 10,000+ active healthcare professionals. The platform enables live vital tracking, instant alerts, and seamless data visualization across departments.",
+        challenge: "The client needed a system that could handle real-time data streaming from thousands of devices simultaneously while maintaining 99.9% uptime. The existing solution was slow, prone to crashes, and lacked mobile support.",
+        solution: "We rebuilt the entire platform from the ground up using a microservices architecture. Implemented WebSocket-based real-time streaming, optimized database queries with indexing, and built a responsive mobile-first interface that works even on slow hospital networks.",
+        results: [
+          "99.9% uptime achieved with zero data loss",
+          "60% faster data loading compared to previous system",
+          "Adopted by 12 hospitals in the first quarter",
+          "Real-time alerts reduced critical response time by 40%"
+        ]
+      },
+      aurora: {
+        title: "Aurora Identity",
+        tag: "Branding",
+        image: "assist/images/gallery-3.jpg",
+        duration: "2 Weeks",
+        role: "Brand Strategy, Visual Identity, Web Design",
+        tech: "Adobe Creative Suite, Webflow",
+        overview: "A complete brand identity system for a luxury fashion label preparing for their flagship store opening. From logo design to digital presence — delivered ahead of schedule.",
+        challenge: "Aurora needed a premium brand identity that would position them alongside established luxury fashion houses. They had no existing brand guidelines and needed everything — logo, typography, color palette, business collateral, and website — within 3 weeks.",
+        solution: "We developed three distinct brand directions and refined the chosen concept through collaborative feedback. Created a comprehensive brand guidelines document, designed all print and digital assets, and built a showcase website that reflects the luxury aesthetic.",
+        results: [
+          "Brand identity delivered 1 week ahead of deadline",
+          "Flagship store launch garnered 500K+ social impressions",
+          "Website bounce rate under 25%",
+          "Featured in 3 lifestyle publications"
+        ]
+      },
+      blackwood: {
+        title: "Blackwood Brews",
+        tag: "Retail",
+        image: "assist/images/gallery-2.jpg",
+        duration: "4 Weeks",
+        role: "Web Development, UX Design, E-commerce Integration",
+        tech: "Next.js, Shopify, Tailwind CSS, Stripe",
+        overview: "An immersive digital experience for a premium coffee roastery. Combined atmospheric storytelling with seamless e-commerce to create a brand presence that matches their artisanal product quality.",
+        challenge: "Blackwood had a generic template-based website that didn't reflect their premium brand. Online sales were stagnant, and they needed a complete digital overhaul that would capture the craft and quality of their coffee roasting process.",
+        solution: "Designed a rich, sensory-first browsing experience with high-quality photography, smooth animations, and detailed product storytelling. Integrated Shopify for reliable e-commerce, optimized the checkout flow, and added a subscription model for recurring revenue.",
+        results: [
+          "Online orders increased by 60% in the first month",
+          "Average order value grew by 25%",
+          "Repeat customer rate improved to 40%",
+          "Subscription model generated 30% of monthly revenue"
+        ]
+      }
+    };
+
+    function loadCaseStudy() {
+      const params = new URLSearchParams(window.location.search);
+      const project = params.get('project');
+      const data = projects[project];
+
+      if (!data) {
+        document.getElementById('caseContent').innerHTML = `
+          <div class="text-center py-20">
+            <i class="fa-solid fa-circle-exclamation text-6xl text-slate-300 mb-6"></i>
+            <h1 class="text-3xl font-bold text-slate-900 mb-4">Project Not Found</h1>
+            <p class="text-slate-600 mb-8">The case study you're looking for doesn't exist.</p>
+            <a href="index.html#work" class="inline-flex items-center gap-3 px-8 py-4 bg-slate-900 text-white rounded-full font-bold text-sm hover:bg-slate-800 transition-all duration-300 shadow-xl">
+              <i class="fa-solid fa-arrow-left"></i> BACK TO PORTFOLIO
+            </a>
+          </div>
+        `;
+        return;
+      }
+
+      document.title = `${data.title} - Case Study | StratumWeb Agency`;
+      document.querySelector('meta[name="description"]').content = data.overview;
+
+      document.getElementById('caseContent').innerHTML = `
+        <a href="index.html#work" class="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-gold transition-colors mb-10">
+          <i class="fa-solid fa-arrow-left"></i> BACK TO PORTFOLIO
+        </a>
+
+        <div class="mb-10">
+          <span class="text-[10px] px-3 py-1 bg-yellow-500/5 text-yellow-600 rounded-lg font-bold uppercase tracking-[0.2em] border border-yellow-500/10">${data.tag}</span>
+        </div>
+
+        <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-8 leading-tight">${data.title}</h1>
+
+        <div class="aspect-video rounded-[2rem] overflow-hidden shadow-2xl border border-slate-200 mb-12">
+          <img src="${data.image}" alt="${data.title}" class="w-full h-full object-cover">
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 p-8 bg-slate-50 rounded-[2rem] border border-slate-100">
+          <div class="text-center">
+            <p class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-bold mb-2">Duration</p>
+            <p class="font-bold text-slate-900">${data.duration}</p>
+          </div>
+          <div class="text-center">
+            <p class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-bold mb-2">Role</p>
+            <p class="font-bold text-slate-900 text-sm">${data.role}</p>
+          </div>
+          <div class="text-center">
+            <p class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-bold mb-2">Tech Stack</p>
+            <p class="font-bold text-slate-900 text-sm">${data.tech}</p>
+          </div>
+          <div class="text-center">
+            <p class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-bold mb-2">Category</p>
+            <p class="font-bold text-slate-900">${data.tag}</p>
+          </div>
+        </div>
+
+        <div class="mb-12">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4">Overview</h2>
+          <p class="text-slate-600 leading-relaxed text-lg">${data.overview}</p>
+        </div>
+
+        <div class="mb-12">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4">The Challenge</h2>
+          <p class="text-slate-600 leading-relaxed text-lg">${data.challenge}</p>
+        </div>
+
+        <div class="mb-12">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4">Our Solution</h2>
+          <p class="text-slate-600 leading-relaxed text-lg">${data.solution}</p>
+        </div>
+
+        <div class="mb-12 p-8 md:p-12 bg-slate-900 rounded-[2rem]">
+          <h2 class="text-2xl md:text-3xl font-bold text-white mb-8">Results</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            ${data.results.map(r => `
+              <div class="flex items-center gap-4 bg-white/5 p-5 rounded-2xl border border-white/10">
+                <div class="w-10 h-10 bg-gold/20 rounded-xl flex items-center justify-center shrink-0">
+                  <i class="fa-solid fa-circle-check text-gold"></i>
+                </div>
+                <p class="text-white/90 text-sm font-medium">${r}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <div class="text-center py-8">
+          <h3 class="text-2xl font-bold text-slate-900 mb-4">Want similar results?</h3>
+          <p class="text-slate-600 mb-8">Let's discuss how we can help your business grow.</p>
+          <a href="index.html#contact" class="inline-flex items-center gap-3 px-10 py-5 btn-gold rounded-full font-bold text-sm shadow-xl hover:shadow-2xl transition-all duration-300">
+            START YOUR PROJECT <i class="fa-solid fa-arrow-right-long"></i>
+          </a>
+        </div>
+      `;
+    }
+
+    loadCaseStudy();
+  </script>
+
+</body>
+</html>
